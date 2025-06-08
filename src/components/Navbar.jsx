@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import { motion } from 'framer-motion';
+import logo from '../assets/logo-white.png'
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     const navClass = ({ isActive }) =>
-        `pb-1 ${isActive ? "border-b-2 border-white" : ""} font-light hover:underline underline-offset-4`;
+        `pb-1 ${isActive ? "border-b-2 border-white" : ""} font-light`;
 
     const leftLinks = (
         <>
@@ -26,9 +28,14 @@ const Navbar = () => {
     );
 
     return (
-        <nav className="bg-black/60 backdrop-blur-md text-white px-6 py-4 fixed top-0 w-full z-50">
+        <motion.nav
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            className="text-white px-6 pt-6 w-full absolute top-0 z-50 bg-transparent"
+        >
             {/* Desktop Layout */}
-            <div className="hidden lg:flex justify-center items-center space-x-6 text-sm uppercase tracking-wide pt-8">
+            <div className="hidden lg:flex justify-center items-center space-x-6 text-sm uppercase tracking-wide pt-6">
                 {/* Left Links */}
                 <div className="space-x-8">
                     {leftLinks}
@@ -36,7 +43,7 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <div className="text-xl font-bold font-serif tracking-widest uppercase text-center px-8">
-                    <img src="/src/assets/logo-white.png" className="h-12 w-26" alt="Logo" />
+                    <img src={logo} className="h-12 w-26" alt="Logo" />
                 </div>
 
                 {/* Right Links */}
@@ -46,8 +53,8 @@ const Navbar = () => {
 
                 {/* Login Button */}
                 <Link to="/book">
-                    <button className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-                        Login / Register
+                    <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                        LOGIN / REGISTER
                     </button>
                 </Link>
             </div>
@@ -89,7 +96,7 @@ const Navbar = () => {
                     onClick={() => setOpen(false)}
                 />
             )}
-        </nav>
+        </motion.nav>
     );
 };
 
