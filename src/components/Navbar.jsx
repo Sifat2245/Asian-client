@@ -43,7 +43,7 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <div className="text-xl font-bold font-serif tracking-widest uppercase text-center px-8">
-                    <img src={logo} className="h-12 w-26" alt="Logo" />
+                    <img src={logo} className=" w-26" alt="Logo" />
                 </div>
 
                 {/* Right Links */}
