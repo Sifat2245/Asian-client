@@ -12,7 +12,7 @@ const PopularDishes = () => {
                 </div>
             </div>
 
-            <div className='mb-24'>
+            <div className='mb-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-4/5 mx-auto'>
                 <DishCard></DishCard>
             </div>
         </>

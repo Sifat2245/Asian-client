@@ -6,7 +6,7 @@ import img from '../assets/shop-1.jpg';
 
 const DishCard = () => {
     return (
-        <div className="group w-80 lg:w-96 mx-auto relative rounded-md overflow-hidden border-2 border-[#f8f8f8] hover:border-[#DB7137] transition-all duration-700">
+        <div className="group w-80 lg:w-96 mx-auto relative rounded-md overflow-hidden border-2 border-[#f3f3f3] hover:border-[#DB7137] transition-all duration-700">
             {/* Image */}
             <div className="relative">
                 <img
@@ -36,9 +36,9 @@ const DishCard = () => {
                             {icon}
                         </motion.button>
                     ))}
-                    <Tooltip id="tooltip-eye" place="left" className="!bg-[#DB7137] !text-white text-sm px-3 py-1 rounded" />
-                    <Tooltip id="tooltip-cart" place="left" className="!bg-[#DB7137] !text-white text-sm px-3 py-1 rounded" />
-                    <Tooltip id="tooltip-heart" place="left" className="!bg-[#DB7137] !text-white text-sm px-3 py-1 rounded" />
+                    <Tooltip id="tooltip-eye" place="left" className="!text-white text-sm px-3 py-1 rounded" />
+                    <Tooltip id="tooltip-cart" place="left" className="!text-white text-sm px-3 py-1 rounded" />
+                    <Tooltip id="tooltip-heart" place="left" className="!text-white text-sm px-3 py-1 rounded" />
                 </div>
             </div>
 
