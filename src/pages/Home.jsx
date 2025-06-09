@@ -10,7 +10,7 @@ const Home = () => {
             <Hero></Hero>
             <PopularDishes></PopularDishes>
             <NewsLetter></NewsLetter>
-            {/* <PoweredBy></PoweredBy> */}
+            <PoweredBy></PoweredBy>
         </div>
     );
 };

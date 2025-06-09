@@ -52,9 +52,9 @@ const Navbar = () => {
                 </div>
 
                 {/* Login Button */}
-                <Link to="/book">
+                <Link to="/user/signin">
                     <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
-                        LOGIN / REGISTER
+                        SIGN IN
                     </button>
                 </Link>
             </div>
@@ -81,9 +81,9 @@ const Navbar = () => {
                         {leftLinks}
                         {rightLinks}
                     </div>
-                    <Link to="/book">
+                    <Link to="/user/signin">
                         <button className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-                            Login / Register
+                            SIGN IN
                         </button>
                     </Link>
                 </div>

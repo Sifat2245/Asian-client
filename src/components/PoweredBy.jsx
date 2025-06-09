@@ -28,7 +28,7 @@ const PoweredBy = () => {
 
       <div className="relative w-full overflow-hidden">
         <motion.div
-          className="flex gap-12 w-max"
+          className="flex gap-10 lg:gap-24 w-max"
           animate={{
             x: ['0%', '-50%']
           }}
