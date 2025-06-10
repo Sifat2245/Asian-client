@@ -24,7 +24,7 @@ const logos = [
 const PoweredBy = () => {
   return (
     <div className="bg-white py-10 overflow-hidden lg:w-2/3 mx-auto mb-24">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">Powered By</h2>
+      <h2 className="text-2xl md:text-4xl font-semibold text-center mb-12">Powered By</h2>
 
       <div className="relative w-full overflow-hidden">
         <motion.div

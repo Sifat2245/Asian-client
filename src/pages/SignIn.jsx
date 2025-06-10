@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const SignIn = () => {
   return (
     <div className="flex justify-center items-center px-4">
-      <div className="bg-white p-8 rounded-2xl w-[40%]">
+      <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Sign In</h2>
 
         <form>
@@ -50,9 +50,25 @@ const SignIn = () => {
           {/* Sign In Button */}
           <button
             type="submit"
-            className="block w-[20%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
+            className="block w-full lg:w-[20%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
           >
             Sign In
+          </button>
+
+          {/* Divider */}
+          <div className="divider text-gray-500 text-sm mt-6">OR</div>
+
+          {/* Google Sign-In Button */}
+          <button
+            type="button"
+            className="lg:w-[40%] mx-auto flex items-center justify-center gap-2 w-full border border-gray-300 py-2 rounded-md hover:bg-gray-100 transition"
+          >
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            <span>Sign in with Google</span>
           </button>
 
           {/* Create Account Link */}

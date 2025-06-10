@@ -21,7 +21,7 @@ const AuthLayot = () => {
                 <div className="relative z-10 w-full ">
                     <Navbar />
                     <div className="mt-60 text-center">
-                        <h1 className="text-3xl lg:text-6xl font-thin">ACCOUNT</h1>
+                        <h1 className="text-3xl lg:text-7xl font-thin">ACCOUNT</h1>
                     </div>
                 </div>
 

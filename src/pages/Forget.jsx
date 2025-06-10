@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Forget = () => {
   return (
     <div className="flex justify-center items-center px-4">
-      <div className="bg-white p-8 rounded-2xl w-[40%]">
+      <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Reset Password</h2>
 
         <form>
@@ -25,7 +25,7 @@ const Forget = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="block w-[40%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
+            className="block w-full lg:w-[40%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
           >
             Reset Password
           </button>
