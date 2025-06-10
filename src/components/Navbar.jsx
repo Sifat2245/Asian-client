@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router";
-import { useState } from "react";
+import { use, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { motion } from 'framer-motion';
 import logo from '../assets/logo-white.png'
+import { authContext } from "../authProvider/AuthProvider";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const { user } = use(authContext)
 
     const navClass = ({ isActive }) =>
         `pb-1 ${isActive ? "border-b-2 border-white" : ""} font-light`;
@@ -51,12 +53,17 @@ const Navbar = () => {
                     {rightLinks}
                 </div>
 
+                
+
                 {/* Login Button */}
-                <Link to="/user/signin">
-                    <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
-                        SIGN IN
-                    </button>
-                </Link>
+                {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                    LOG OUT
+                </button> :
+                    <Link to="/user/signin">
+                        <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                            SIGN IN
+                        </button>
+                    </Link>}
             </div>
 
             {/* Mobile Layout */}
@@ -81,11 +88,14 @@ const Navbar = () => {
                         {leftLinks}
                         {rightLinks}
                     </div>
-                    <Link to="/user/signin">
-                        <button className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-                            SIGN IN
-                        </button>
-                    </Link>
+                    {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                        LOG OUT
+                    </button> :
+                        <Link to="/user/signin">
+                            <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                                SIGN IN
+                            </button>
+                        </Link>}
                 </div>
             </div>
 

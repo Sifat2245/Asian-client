@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { authContext } from '../authProvider/AuthProvider';
 
 const Forget = () => {
+
+  const {resetPassword} = use(authContext)
+
+  const handleForget = e =>{
+    e.preventDefault()
+    const email = e.target.email.value
+
+    resetPassword(email)
+    .then(() =>{
+      alert('password reset email has sent to your email address');
+    })
+    .catch(error =>{
+      console.log(error);
+    })
+  }
+
   return (
     <div className="flex justify-center items-center px-4">
       <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Reset Password</h2>
 
-        <form>
+        <form onSubmit={handleForget}>
           {/* Email */}
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -15,7 +32,7 @@ const Forget = () => {
             </label>
             <input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email address"
               className="w-full px-4 py-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#DB7137]"
               required

@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { authContext } from '../authProvider/AuthProvider';
 
 const SignIn = () => {
+
+  const {loginUser, setUser, googleLogin} = use(authContext)
+
+  const handleSignIn = e =>{
+    e.preventDefault()
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value
+
+
+    loginUser(email, password)
+    .then(result =>{
+      const user = result.user
+      setUser(user)
+    })
+    .catch(error =>{
+      console.log(error);
+    })  
+  }
+
+
+  //login with google
+  const handleLogin = () =>{
+      googleLogin()
+      .then(result =>{
+        const user = result.user
+        setUser(user)
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+  }
+
   return (
     <div className="flex justify-center items-center px-4">
       <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Sign In</h2>
 
-        <form>
+        <form onSubmit={handleSignIn}>
           {/* Email */}
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -15,7 +49,7 @@ const SignIn = () => {
             </label>
             <input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email"
               className="w-full px-4 py-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#DB7137]"
               required
@@ -29,7 +63,7 @@ const SignIn = () => {
             </label>
             <input
               type="password"
-              id="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#DB7137]"
               required
@@ -61,6 +95,7 @@ const SignIn = () => {
           {/* Google Sign-In Button */}
           <button
             type="button"
+            onClick={handleLogin}
             className="lg:w-[40%] mx-auto flex items-center justify-center gap-2 w-full border border-gray-300 py-2 rounded-md hover:bg-gray-100 transition"
           >
             <img

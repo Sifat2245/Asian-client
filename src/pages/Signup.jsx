@@ -5,7 +5,7 @@ import { authContext } from '../authProvider/AuthProvider';
 
 const Signup = () => {
 
-    const { createUser } = use(authContext)
+    const { createUser, setUser, googleLogin, updateUser} = use(authContext)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
     const [password, setPassword] = useState('')
@@ -20,7 +20,7 @@ const Signup = () => {
 
     // console.log(password);
 
-    
+
     useEffect(() => {
         const length = password.length >= 6;
         const upper = /[A-Z]/.test(password);
@@ -86,6 +86,37 @@ const Signup = () => {
             return
         }
 
+        createUser(email, password)
+        .then(result =>{
+            const user = result.user
+            updateUser({
+                displayName: name,
+                photoUrl: profile
+            })
+            .then(() =>{
+                setUser({...user, displayName: name, photoUrl: profile})
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
+    }
+
+
+    // login with google
+    const handleLogin = () =>{
+        googleLogin()
+        .then(result =>{
+            const user = result.user
+            setUser(user)
+        })
+        .catch(error =>{
+            console.log(error);
+        })
     }
 
     return (
@@ -273,6 +304,7 @@ const Signup = () => {
                     {/* Google Sign-In Button */}
                     <button
                         type="button"
+                        onClick={handleLogin}
                         className="lg:w-[40%] mx-auto flex items-center justify-center gap-2 w-full border border-gray-300 py-2 rounded-md hover:bg-gray-100 transition"
                     >
                         <img
