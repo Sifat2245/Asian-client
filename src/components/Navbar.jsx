@@ -4,10 +4,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { motion } from 'framer-motion';
 import logo from '../assets/logo-white.png'
 import { authContext } from "../authProvider/AuthProvider";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user } = use(authContext)
+    const { user, logout } = use(authContext)
 
     const navClass = ({ isActive }) =>
         `pb-1 ${isActive ? "border-b-2 border-white" : ""} font-light`;
@@ -28,6 +29,14 @@ const Navbar = () => {
             <NavLink to="/contact" className={navClass}>Contact</NavLink>
         </>
     );
+
+    const mobileVersion = (
+        <>
+        <Link to="/my-foods">My Foods</Link>
+         <Link to="/add-food">Add Food</Link>
+          <Link to="/my-orders">My Orders</Link>
+        </>
+    )
 
     return (
         <motion.nav
@@ -53,14 +62,37 @@ const Navbar = () => {
                     {rightLinks}
                 </div>
 
-                
+                <div className="dropdown dropdown-end">
+                    {user && (
+                        <label tabIndex={0} className=" hover:cursor-pointer">
+                            <FaRegUserCircle className="h-6 w-6" />
+                        </label>
+                    )}
+                    <ul
+                        tabIndex={0}
+                        className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-[#2c2c2c] rounded-box w-52 text-white space-y-2"
+                    >
+                        <li>
+                            <Link to="/my-foods">My Foods</Link>
+                        </li>
+                        <li>
+                            <Link to="/add-food">Add Food</Link>
+                        </li>
+                        <li>
+                            <Link to="/my-orders">My Orders</Link>
+                        </li>
+                    </ul>
+                </div>
+
+
 
                 {/* Login Button */}
-                {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition mb-2"
+                    onClick={() => logout()}>
                     LOG OUT
                 </button> :
                     <Link to="/user/signin">
-                        <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                        <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition mb-2">
                             SIGN IN
                         </button>
                     </Link>}
@@ -78,21 +110,27 @@ const Navbar = () => {
             </div>
 
 
-            <div className={`fixed top-0 right-0 h-full w-64 bg-black text-white p-6 z-50 transform transition-transform duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full"}`}>
+            <div className={`fixed top-0 right-0 h-full w-64 bg-[#2c2c2c] text-white p-6 z-50 transform transition-transform duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full"}`}>
                 <div className="flex justify-between items-center mb-6">
                     <span className="text-lg font-semibold">Menu</span>
                     <button onClick={() => setOpen(false)} className="text-xl font-bold">×</button>
                 </div>
                 <div className="space-y-3">
                     <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-9 font-normal">
+                            {user && mobileVersion}
+                        </div>
                         {leftLinks}
                         {rightLinks}
                     </div>
-                    {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+
+
+                    {user ? <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition mt-4"
+                        onClick={() => logout()}>
                         LOG OUT
                     </button> :
                         <Link to="/user/signin">
-                            <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition">
+                            <button className="border border-white px-4 pt-2 pb-1 ml-2 rounded hover:bg-white hover:text-black transition mt-4">
                                 SIGN IN
                             </button>
                         </Link>}

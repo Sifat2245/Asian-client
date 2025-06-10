@@ -2,10 +2,11 @@ import React, { use, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai'
 import { authContext } from '../authProvider/AuthProvider';
+import axios from 'axios';
 
 const Signup = () => {
 
-    const { createUser, setUser, googleLogin, updateUser} = use(authContext)
+    const { createUser, setUser, googleLogin, updateUser } = use(authContext)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
     const [password, setPassword] = useState('')
@@ -80,6 +81,13 @@ const Signup = () => {
         const password = form.password.value
         const confirmPassword = form.confirmPassword.value
 
+        const userData = {
+            name: name,
+            profileImg: profile,
+            email: email,
+            password: password
+        }
+
         // console.log(name, profile, email, password);
         if (password !== confirmPassword) {
             setError('Password Did not match!')
@@ -87,36 +95,43 @@ const Signup = () => {
         }
 
         createUser(email, password)
-        .then(result =>{
-            const user = result.user
-            updateUser({
-                displayName: name,
-                photoUrl: profile
-            })
-            .then(() =>{
-                setUser({...user, displayName: name, photoUrl: profile})
+            .then(result => {
+                const user = result.user
+                updateUser({
+                    displayName: name,
+                    photoURL: profile
+                })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: profile })
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+              axios.post('http://localhost:3000/users', userData)
+              .then(res =>{
+                console.log(res.data);
+              })
+              .catch(error =>{
+                console.log('there is an error', error);
+              })
             })
             .catch(error => {
                 console.log(error);
             })
-        })
-        .catch(error =>{
-            console.log(error);
-        })
 
     }
 
 
     // login with google
-    const handleLogin = () =>{
+    const handleLogin = () => {
         googleLogin()
-        .then(result =>{
-            const user = result.user
-            setUser(user)
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+            .then(result => {
+                const user = result.user
+                setUser(user)
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -186,21 +201,21 @@ const Signup = () => {
                                 <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
                                     <div
                                         className={`h-full transition-all duration-300 rounded-full ${strength === 'weak'
-                                                ? 'w-1/6 bg-red-500'
-                                                : strength === 'medium'
-                                                    ? 'w-1/2 bg-yellow-500'
-                                                    : strength === 'strong'
-                                                        ? 'w-full bg-green-500'
-                                                        : 'w-0'
+                                            ? 'w-1/6 bg-red-500'
+                                            : strength === 'medium'
+                                                ? 'w-1/2 bg-yellow-500'
+                                                : strength === 'strong'
+                                                    ? 'w-full bg-green-500'
+                                                    : 'w-0'
                                             }`}
                                     ></div>
                                 </div>
                                 <p
                                     className={`text-xs mt-1 ${strength === 'weak'
-                                            ? 'text-red-500'
-                                            : strength === 'medium'
-                                                ? 'text-yellow-600'
-                                                : 'text-green-600'
+                                        ? 'text-red-500'
+                                        : strength === 'medium'
+                                            ? 'text-yellow-600'
+                                            : 'text-green-600'
                                         }`}
                                 >
                                     Password strength: {strength}
