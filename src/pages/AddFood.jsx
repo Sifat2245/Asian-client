@@ -16,6 +16,7 @@ const AddFood = () => {
         category: '',
         quantity: '',
         description: '',
+        longDescription:'',
         purchaseCount: '0',
         addedBy: user.email,
     });
@@ -143,7 +144,18 @@ const AddFood = () => {
                         placeholder="Description"
                         value={formData.description}
                         onChange={handleChange}
-                        rows="4"
+                        rows="3"
+                        className="w-full p-2 mt-2 border border-gray-300 rounded"
+                        required
+                    />
+                    <label htmlFor="longDescription">Detailed Content</label>
+                    <textarea
+                        id='longDescription'
+                        name="longDescription"
+                        placeholder="Write Detailed Content"
+                        value={formData.longDescription}
+                        onChange={handleChange}
+                        rows="5"
                         className="w-full p-2 mt-2 border border-gray-300 rounded"
                         required
                     />
