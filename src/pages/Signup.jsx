@@ -104,14 +104,15 @@ const Signup = () => {
                 updateUser({
                     displayName: name,
                     photoURL: profile
+                }).then(() => {
+                    setUser({ ...user, displayName: name, photoURL: profile })
+                    // console.log(user);
+                    navigate(from)
                 })
-                    .then(() => {
-                        setUser({ ...user, displayName: name, photoURL: profile })
-                    })
                     .catch(error => {
                         console.log(error);
                     })
-                navigate(from)
+                
 
 
                 axios.post('http://localhost:3000/users', userData)

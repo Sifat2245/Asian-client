@@ -1,6 +1,5 @@
 import React from 'react';
 import bgImg from '../assets/bg.jpg'
-import Navbar from '../components/Navbar';
 
 const FoodDetails = () => {
     return (

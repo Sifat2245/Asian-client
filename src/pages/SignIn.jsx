@@ -21,6 +21,7 @@ const SignIn = () => {
       const user = result.user
       setUser(user)
       navigate(from)
+      console.log(user);
     })
     .catch(error =>{
       console.log(error);
