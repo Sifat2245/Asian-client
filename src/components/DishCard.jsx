@@ -2,6 +2,7 @@ import { FaEye, FaShoppingBag, FaHeart, FaStar } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip';
 import { motion } from "framer-motion";
 import img from '../assets/shop-1.jpg';
+import { Link } from "react-router";
 
 
 const DishCard = () => {
@@ -52,7 +53,10 @@ const DishCard = () => {
                     <span className="text-gray-500 text-sm ml-2">1 review</span>
                 </div>
 
-                <h3 className="text-xl font-semibold mt-3">English Breakfast</h3>
+                <Link to={'/foodDetails'}>
+                    <h3 className="text-xl font-semibold mt-3 hover:text-[#DB7137]">English Breakfast</h3>
+                </Link>
+
 
                 {/* Decorative line with hover animation */}
                 <div className="flex items-center justify-center gap-2 my-4">

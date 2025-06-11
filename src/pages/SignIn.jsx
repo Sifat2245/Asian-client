@@ -1,10 +1,13 @@
-import React, { use } from 'react';
-import { Link } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
 
 const SignIn = () => {
 
-  const {loginUser, setUser, googleLogin} = use(authContext)
+  const {loginUser, setUser, googleLogin} = useContext(authContext)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.pathname || '/'
 
   const handleSignIn = e =>{
     e.preventDefault()
@@ -17,6 +20,7 @@ const SignIn = () => {
     .then(result =>{
       const user = result.user
       setUser(user)
+      navigate(from)
     })
     .catch(error =>{
       console.log(error);
@@ -30,6 +34,7 @@ const SignIn = () => {
       .then(result =>{
         const user = result.user
         setUser(user)
+        navigate(from)
       })
       .catch(error =>{
         console.log(error);

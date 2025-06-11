@@ -1,22 +1,29 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Forget = () => {
 
-  const {resetPassword} = use(authContext)
+  const { resetPassword } = use(authContext)
 
-  const handleForget = e =>{
+  const handleForget = e => {
     e.preventDefault()
     const email = e.target.email.value
 
     resetPassword(email)
-    .then(() =>{
-      alert('password reset email has sent to your email address');
-    })
-    .catch(error =>{
-      console.log(error);
-    })
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Password reset email sent! Please check your inbox (and spam folder)",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   return (

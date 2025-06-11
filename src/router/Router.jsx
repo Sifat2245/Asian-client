@@ -5,6 +5,9 @@ import AuthLayot from "../layouts/AuthLayot";
 import SignIn from "../pages/SignIn";
 import Signup from "../pages/Signup";
 import Forget from "../pages/Forget";
+import FoodDetails from "../pages/FoodDetails";
+import AllFoods from "../pages/AllFoods";
+import Gallery from "../pages/Gallery";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +17,18 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: '/foodDetails',
+                Component: FoodDetails
+            },
+            {
+                path: '/allFoods',
+                Component: AllFoods
+            },
+            {
+               path: '/ourGallery',
+               Component: Gallery 
             }
         ]
     },

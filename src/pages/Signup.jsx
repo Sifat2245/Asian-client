@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai'
 import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
 
@@ -18,8 +19,11 @@ const Signup = () => {
         number: false,
         symbol: false
     })
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.pathname || '/';
     // console.log(password);
+    // console.log(location);
 
 
     useEffect(() => {
@@ -107,13 +111,26 @@ const Signup = () => {
                     .catch(error => {
                         console.log(error);
                     })
-              axios.post('http://localhost:3000/users', userData)
-              .then(res =>{
-                console.log(res.data);
-              })
-              .catch(error =>{
-                console.log('there is an error', error);
-              })
+                navigate(from)
+
+
+                axios.post('http://localhost:3000/users', userData)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Signup successful! You're now part of the Asian Restaurant family.",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log('there is an error', error);
+                    })
+
+
             })
             .catch(error => {
                 console.log(error);
@@ -128,6 +145,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user
                 setUser(user)
+                navigate(from)
             })
             .catch(error => {
                 console.log(error);

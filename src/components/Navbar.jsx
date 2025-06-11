@@ -17,8 +17,8 @@ const Navbar = () => {
         <>
             <NavLink to="/" className={navClass}>Home</NavLink>
             <NavLink to="/about" className={navClass}>About Us</NavLink>
-            <NavLink to="/pages" className={navClass}>All Foods</NavLink>
-            <NavLink to="/menu" className={navClass}>Gallery</NavLink>
+            <NavLink to="/allFoods" className={navClass}>All Foods</NavLink>
+            <NavLink to="/ourGallery" className={navClass}>Gallery</NavLink>
         </>
     );
 
@@ -65,20 +65,20 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     {user && (
                         <label tabIndex={0} className=" hover:cursor-pointer">
-                            <FaRegUserCircle className="h-6 w-6" />
+                            <FaRegUserCircle className="h-6 w-6 mb-2" />
                         </label>
                     )}
                     <ul
                         tabIndex={0}
                         className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-[#2c2c2c] rounded-box w-52 text-white space-y-2"
                     >
-                        <li>
+                        <li className="hover:bg-[#DB7137] rounded">
                             <Link to="/my-foods">My Foods</Link>
                         </li>
-                        <li>
+                        <li className="hover:bg-[#DB7137] rounded">
                             <Link to="/add-food">Add Food</Link>
                         </li>
-                        <li>
+                        <li className="hover:bg-[#DB7137] rounded">
                             <Link to="/my-orders">My Orders</Link>
                         </li>
                     </ul>

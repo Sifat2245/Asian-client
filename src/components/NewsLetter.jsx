@@ -1,5 +1,5 @@
 import React from 'react';
-import bgimg from '../assets/bg.jpg';
+import bgimg from '../assets/slide2-bg.jpg';
 
 const NewsLetter = () => {
     return (
