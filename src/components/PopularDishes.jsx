@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { use } from 'react';
 import DishCard from './DishCard';
 
-const PopularDishes = () => {
+const PopularDishes = ({FoodPromise}) => {
+    const foods = use(FoodPromise)
     return (
         <>
             <div className='my-24 px-8'>
@@ -12,8 +13,13 @@ const PopularDishes = () => {
                 </div>
             </div>
 
-            <div className='mb-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-4/5 mx-auto'>
-                <DishCard></DishCard>
+           
+
+            <div className='mb-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-3/4 mx-auto'>
+             {
+                foods.map(food => <DishCard food={food} key={food._id}></DishCard>)
+            }
+                
             </div>
         </>
     );

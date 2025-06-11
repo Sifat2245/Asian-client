@@ -5,13 +5,14 @@ import img from '../assets/shop-1.jpg';
 import { Link } from "react-router";
 
 
-const DishCard = () => {
+const DishCard = ({food}) => {
+    const {_id, image, name, price} = food
     return (
-        <div className="group w-80 lg:w-96 mx-auto relative rounded-md overflow-hidden border-2 border-[#f3f3f3] hover:border-[#DB7137] transition-all duration-700">
+        <div className="group w-64 lg:w-80 mx-auto relative rounded-md overflow-hidden border-2 border-[#f3f3f3] hover:border-[#DB7137] transition-all duration-700">
             {/* Image */}
             <div className="relative">
                 <img
-                    src={img}
+                    src={image}
                     alt="English Breakfast"
                     className="w-full object-contain bg-white p-6"
                 />
@@ -53,8 +54,8 @@ const DishCard = () => {
                     <span className="text-gray-500 text-sm ml-2">1 review</span>
                 </div>
 
-                <Link to={'/foodDetails'}>
-                    <h3 className="text-xl font-semibold mt-3 hover:text-[#DB7137]">English Breakfast</h3>
+                <Link to={`/foodDetails/${_id}`}>
+                    <h3 className="text-xl font-semibold mt-3 hover:text-[#DB7137]">{name}</h3>
                 </Link>
 
 
@@ -68,7 +69,7 @@ const DishCard = () => {
                 </div>
 
 
-                <p className="text-xl text-gray-700">$350.00</p>
+                <p className="text-xl text-gray-700">${price}</p>
             </div>
         </div>
     );

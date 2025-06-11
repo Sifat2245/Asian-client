@@ -29,7 +29,7 @@ const Footer = () => {
     return (
         <>
             <div
-                className="relative bg-cover bg-center py-32 w-full px-4"
+                className="relative bg-cover bg-center py-28 w-full px-4"
                 style={{ backgroundImage: `url(${footerImg})` }}
             >
                 <div className="absolute inset-0 bg-[#2e2e2ec9] z-0"></div>

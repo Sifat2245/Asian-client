@@ -18,7 +18,6 @@ const AddFood = () => {
         description: '',
         purchaseCount: '0',
         addedBy: user.email,
-        userName: user.displayName
     });
     console.log(formData);
 
