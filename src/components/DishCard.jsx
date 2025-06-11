@@ -14,7 +14,7 @@ const DishCard = ({food}) => {
                 <img
                     src={image}
                     alt="English Breakfast"
-                    className="w-full object-contain bg-white p-6"
+                    className="w-full object-contain bg-white"
                 />
 
                 {/* Hover Buttons with framer-motion */}

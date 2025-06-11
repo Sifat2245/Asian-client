@@ -111,7 +111,7 @@ const Hero = () => {
 
                             {/* Button */}
                             <div className="relative inline-block overflow-hidden mt-12">
-                                <Link>
+                                <Link to={'/allFoods'}>
                                     <motion.button
                                         className="bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-8 lg:py-3 tracking-widest rounded-sm relative z-10"
                                         variants={textVariants}

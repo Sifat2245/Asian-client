@@ -1,7 +1,9 @@
 import React from 'react';
 import bgImg from '../assets/bg.jpg'
+import { useLoaderData } from 'react-router';
 
 const FoodDetails = () => {
+    const foodDetails = useLoaderData()
     return (
         <div>
             <div
@@ -23,7 +25,7 @@ const FoodDetails = () => {
             </div>
 
             <div className='my-96'>
-
+                <h1>{foodDetails._id}</h1>
             </div>
         </div>
     );

@@ -23,7 +23,8 @@ export const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/foodDetails',
+                path: '/foodDetails/:id',
+                loader: ({params}) => fetch(`https://asian-server-mu.vercel.app/foods/${params.id}`),
                 Component: FoodDetails
             },
             {
