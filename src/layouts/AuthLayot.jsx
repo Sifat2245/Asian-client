@@ -14,7 +14,7 @@ const AuthLayot = () => {
                     backgroundPosition: 'top',
                     backgroundRepeat: 'no-repeat'
                 }}
-                className="relative text-white min-h-[35vh] bg-[#1b1b1b7e] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
+                className="relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1b7e] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0"></div>
 

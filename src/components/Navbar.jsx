@@ -32,9 +32,9 @@ const Navbar = () => {
 
     const mobileVersion = (
         <>
-        <Link to="/my-foods">My Foods</Link>
-         <Link to="/add-food">Add Food</Link>
-          <Link to="/my-orders">My Orders</Link>
+        <Link to="/myFoods">My Foods</Link>
+         <Link to="/addFood">Add Food</Link>
+          <Link to="/myOrders">My Orders</Link>
         </>
     )
 
@@ -73,13 +73,13 @@ const Navbar = () => {
                         className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-[#2c2c2c] rounded-box w-52 text-white space-y-2"
                     >
                         <li className="hover:bg-[#DB7137] rounded">
-                            <Link to="/my-foods">My Foods</Link>
+                            <Link to="/myFoods">My Foods</Link>
                         </li>
                         <li className="hover:bg-[#DB7137] rounded">
-                            <Link to="/add-food">Add Food</Link>
+                            <Link to="/addFood">Add Food</Link>
                         </li>
                         <li className="hover:bg-[#DB7137] rounded">
-                            <Link to="/my-orders">My Orders</Link>
+                            <Link to="/myOrders">My Orders</Link>
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,10 @@ import Forget from "../pages/Forget";
 import FoodDetails from "../pages/FoodDetails";
 import AllFoods from "../pages/AllFoods";
 import Gallery from "../pages/Gallery";
+import MyFood from "../pages/MyFood";
+import AddFood from "../pages/AddFood";
+import MyOrders from "../pages/MyOrders";
+import PrivateRoute from "./privateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +33,24 @@ export const router = createBrowserRouter([
             {
                path: '/ourGallery',
                Component: Gallery 
+            },
+            {
+                path:'/myFoods',
+                element: <PrivateRoute>
+                    <MyFood></MyFood>
+                </PrivateRoute>
+            },
+            {
+                path: '/addFood',
+                element: <PrivateRoute>
+                    <AddFood></AddFood>
+                </PrivateRoute>
+            },
+            {
+                path: '/myOrders',
+                element: <PrivateRoute>
+                    <MyOrders></MyOrders>
+                </PrivateRoute>
             }
         ]
     },
