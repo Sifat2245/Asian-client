@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import bgImg from '../assets/bg.jpg'
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import foodImg from '../assets/shop-1.jpg'
 import { FaStar } from 'react-icons/fa';
 import { TbTruckDelivery } from 'react-icons/tb';
@@ -96,7 +96,7 @@ const FoodDetails = () => {
                                 </span>
                                 <button
                                     onClick={handleIncrease}
-                                    
+
                                     className="px-4 py-2 border-l hover:bg-gray-200"
                                 >
                                     +
@@ -110,7 +110,10 @@ const FoodDetails = () => {
                             <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Cart</button>
                             <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Wishlist</button>
                         </div>
-                        <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm  w-2/3'>Order Now</button>
+                        <Link to={'/checkout'}>
+                            <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm  w-2/3'>Order Now</button>
+                        </Link>
+
 
                         <div className='flex items-center gap-2 mb-3'>
                             <TbTruckDelivery className='h-6 w-6' />

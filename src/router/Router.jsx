@@ -16,6 +16,7 @@ import AboutUs from "../pages/AboutUs";
 import Shop from "../pages/Shop";
 import News from "../pages/News";
 import ContactUs from "../pages/ContactUs";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,12 @@ export const router = createBrowserRouter([
                 path: '/myOrders',
                 element: <PrivateRoute>
                     <MyOrders></MyOrders>
+                </PrivateRoute>
+            },
+            {
+                path:'/checkout',
+                element: <PrivateRoute>
+                    <Checkout></Checkout>
                 </PrivateRoute>
             },
             {
