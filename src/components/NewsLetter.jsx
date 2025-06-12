@@ -1,7 +1,18 @@
 import React from 'react';
 import bgimg from '../assets/slide2-bg.jpg';
+import Swal from 'sweetalert2';
 
 const NewsLetter = () => {
+
+    const handleSubmit = () => {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thank you for subscribing! You'll receive our latest updates and offers in your inbox.",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
     return (
         <div
             className="relative bg-fixed bg-center bg-cover bg-no-repeat text-white mb-24"
@@ -21,8 +32,9 @@ const NewsLetter = () => {
                         type="email"
                         placeholder="Enter your email"
                         className="w-full px-4 py-4 bg-white text-black focus:outline-none"
+                        required
                     />
-                    <button className="bg-[#DB7137] hover:bg-[#272727] text-white font-semibold px-6 py-4 transition">
+                    <button onClick={handleSubmit} className="bg-[#DB7137] hover:bg-[#272727] text-white font-semibold px-6 py-4 transition">
                         Subscribe
                     </button>
                 </div>

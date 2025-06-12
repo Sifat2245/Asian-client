@@ -12,6 +12,10 @@ import MyFood from "../pages/MyFood";
 import AddFood from "../pages/AddFood";
 import MyOrders from "../pages/MyOrders";
 import PrivateRoute from "./privateRoute";
+import AboutUs from "../pages/AboutUs";
+import Shop from "../pages/Shop";
+import News from "../pages/News";
+import ContactUs from "../pages/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +56,22 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyOrders></MyOrders>
                 </PrivateRoute>
+            },
+            {
+                path:'/about',
+                Component: AboutUs
+            },
+            {
+                path:'/shop',
+                Component: Shop
+            },
+            {
+                path: '/news',
+                Component: News
+            },
+            {
+                path: '/contact',
+                Component: ContactUs
             }
         ]
     },

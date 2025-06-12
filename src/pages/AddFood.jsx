@@ -31,7 +31,7 @@ const AddFood = () => {
         e.preventDefault();
         // console.log('Food submitted:', formData);
 
-        axios.post('http://localhost:3000/foods', formData)
+        axios.post('https://asian-server-mu.vercel.app/foods', formData)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

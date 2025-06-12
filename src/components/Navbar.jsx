@@ -101,7 +101,7 @@ const Navbar = () => {
             {/* Mobile Layout */}
             <div className="lg:hidden flex justify-between items-center">
                 <Link to="/">
-                    <img src="/src/assets/logo-white.png" className="h-10 w-auto" alt="Logo" />
+                    <img src={logo} className="h-10 w-auto" alt="Logo" />
                 </Link>
 
                 <button onClick={() => setOpen(true)}>

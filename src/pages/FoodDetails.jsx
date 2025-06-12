@@ -8,17 +8,26 @@ import { CgNotes } from 'react-icons/cg';
 
 const FoodDetails = () => {
     const { image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
+    // const availableQuantity = quantity
 
     const [qntity, setQntity] = useState(1)
+    const [maxMessage, setMaxMessage] = useState('')
 
     const handleDecrease = () => {
         if (qntity > 1) {
             setQntity(prev => prev - 1)
+            setMaxMessage('')
         }
     }
 
     const handleIncrease = () => {
-        setQntity(prev => prev + 1)
+        if (qntity < quantity) {
+            setQntity(prev => prev + 1)
+            setMaxMessage('')
+        }
+        else {
+            setMaxMessage('Max limit reached.')
+        }
     }
 
     return (
@@ -87,24 +96,28 @@ const FoodDetails = () => {
                                 </span>
                                 <button
                                     onClick={handleIncrease}
+                                    
                                     className="px-4 py-2 border-l hover:bg-gray-200"
                                 >
                                     +
                                 </button>
                             </div>
+                            {maxMessage && (
+                                <p className="text-red-600 text-sm mt-2">{maxMessage}</p>
+                            )}
                         </div>
                         <div className='flex gap-3'>
-                        <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Cart</button>
-                        <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Wishlist</button>
+                            <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Cart</button>
+                            <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Wishlist</button>
                         </div>
                         <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm  w-2/3'>Order Now</button>
 
                         <div className='flex items-center gap-2 mb-3'>
-                            <TbTruckDelivery  className='h-6 w-6'/>
+                            <TbTruckDelivery className='h-6 w-6' />
                             <p><span className='font-semibold'>Estimated delivery:</span> half an hour</p>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <CgNotes  className='h-6 w-6'/>
+                            <CgNotes className='h-6 w-6' />
 
                             <p><span className='font-semibold'>Free Shipping:</span> On orders above $79</p>
                         </div>
