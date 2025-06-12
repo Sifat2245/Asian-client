@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { use } from 'react';
 import bgImg from '../assets/para-01.jpg';
+import { useLocation } from 'react-router';
+import { authContext } from '../authProvider/AuthProvider';
 
 
 const Checkout = () => {
+    const location = useLocation()
+    const foodData = location.state || {}
+    const {user} = use(authContext)
+    console.log(user.email);
+
+
+    const quantity = foodData.qntity || 1
+    const price = foodData.price || 0
+    const shipping = 5.52
+    const subtotal = price * quantity
+    const total = subtotal + shipping
+
     return (
         <>
             <div
@@ -34,7 +48,7 @@ const Checkout = () => {
                             <div className="mb-4">
                                 <h2 className="text-2xl font-semibold">Contact</h2>
                             </div>
-                            <input type="text" placeholder="Email or mobile phone number" className="input input-bordered w-full mb-2" />
+                            <input type="text" defaultValue={user.email} className="input input-bordered w-full mb-2" />
                             <div className="form-control">
                                 <label className="label cursor-pointer justify-start gap-4">
                                     <input type="checkbox" className="checkbox checkbox-sm" />
@@ -74,7 +88,7 @@ const Checkout = () => {
                             <h2 className="text-2xl font-semibold mb-4">Shipping method</h2>
                             <div className="p-4 border border-base-300 rounded-lg flex justify-between items-center">
                                 <span>Standard</span>
-                                <span className="font-semibold">$17.52</span>
+                                <span className="font-semibold">$5.52</span>
                             </div>
                         </div>
 
@@ -114,18 +128,17 @@ const Checkout = () => {
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-4">
                                     <div className="avatar">
-                                        <div className="w-16 rounded-lg relative ring ring-base-300">
-                                            {/* Placeholder for product image */}
-                                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80" alt="English Breakfast" />
-                                            <div className="badge badge-neutral absolute -top-2 -right-2">1</div>
+                                        <div className="w-20 rounded-lg relative ring ring-base-300">
+                                             <div className="badge badge-neutral absolute top- right-0 z-10">{foodData.qntity}</div>
+                                            <img src={foodData.image} />
                                         </div>
                                     </div>
                                     <div>
-                                        <p className="font-semibold">English Breakfast</p>
-                                        <p className="text-sm text-base-content/70">Veg / Britain / Egg</p>
+                                        <p className="font-semibold">{foodData.name}</p>
+                                        <p className="text-sm text-base-content/70">{foodData.cuisine}</p>
                                     </div>
                                 </div>
-                                <p className="font-semibold">$350.00</p>
+                                <p className="font-semibold">${price}</p>
                             </div>
 
                             <div className="divider"></div>
@@ -133,11 +146,11 @@ const Checkout = () => {
                             <div className="space-y-2 mb-4">
                                 <div className="flex justify-between">
                                     <p>Subtotal</p>
-                                    <p>$350.00</p>
+                                    <p>${subtotal.toFixed(2)}</p>
                                 </div>
                                 <div className="flex justify-between">
                                     <p>Shipping</p>
-                                    <p>$17.52</p>
+                                    <p>$5.52</p>
                                 </div>
                             </div>
 
@@ -147,7 +160,7 @@ const Checkout = () => {
                                 <p className="text-lg">Total</p>
                                 <p className="text-2xl font-bold">
                                     <span className="text-sm font-normal text-base-content/70 mr-2">USD</span>
-                                    $367.52
+                                    ${total.toFixed(2)}
                                 </p>
                             </div>
                         </div>
