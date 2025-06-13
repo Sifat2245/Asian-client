@@ -10,7 +10,6 @@ const Signup = () => {
 
     const { createUser, setUser, googleLogin, updateUser } = use(authContext)
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
     const [password, setPassword] = useState('')
     const [strength, setStrength] = useState('')
     const [requirements, setRequirements] = useState({
@@ -76,7 +75,6 @@ const Signup = () => {
 
     const handleSignUp = (e) => {
         setError('')
-        setSuccess('')
 
         e.preventDefault()
         const form = e.target;

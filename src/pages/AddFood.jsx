@@ -31,8 +31,14 @@ const AddFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log('Food submitted:', formData);
+        const preparedData = {
+            ...formData,
+            price: parseFloat(formData.price),
+            quantity: parseInt(formData.quantity),
+            purchaseCount: parseInt(formData.purchaseCount)
+        }
 
-        axios.post('https://asian-server-mu.vercel.app/foods', formData)
+        axios.post('https://asian-server-mu.vercel.app/foods', preparedData)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

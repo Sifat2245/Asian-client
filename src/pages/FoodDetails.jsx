@@ -9,7 +9,7 @@ import PageTitle from '../hooks/PageTitle';
 
 const FoodDetails = () => {
 
-    const {_id, image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
+    const { _id, image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
     // const availableQuantity = quantity
     // console.log(_id);
 
@@ -114,7 +114,7 @@ const FoodDetails = () => {
                                 >
                                     +
                                 </button>
-                                
+
                             </div>
                             <div>
                                 <p>Available: {quantity} items</p>
@@ -127,9 +127,23 @@ const FoodDetails = () => {
                             <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Cart</button>
                             <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm'>Add To Wishlist</button>
                         </div>
-                        <Link to={'/checkout'} state={foodData}>
-                            <button className='bg-[#DB7137] hover:bg-[#272727] transition-all duration-300 hover:cursor-pointer border-0 text-white px-4 py-2 lg:px-4 lg:py-2 tracking-widest rounded-sm  w-2/3'>Order Now</button>
+                        <Link
+                            to={'/checkout'}
+                            state={foodData}>
+                            <button
+                                className={`w-2/3 tracking-widest rounded-sm transition-all duration-300 border-0 text-white px-4 py-2 lg:px-4 lg:py-2 
+                                    ${quantity === 0
+                                        ? 'bg-[#f7a274] hover:cursor-not-allowed'
+                                        : 'bg-[#DB7137] hover:bg-[#272727] hover:cursor-pointer'}`}
+                                disabled={quantity === 0}
+                            >Order Now</button>
                         </Link>
+
+                        <div className='my-3'>
+                            {quantity === 0 && (
+                                <p className='text-red-600'>Item is not available right now</p>
+                            )}
+                        </div>
 
 
                         <div className='flex items-center gap-2 my-3'>
