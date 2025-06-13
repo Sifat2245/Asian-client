@@ -1,21 +1,82 @@
 import React, { use } from 'react';
 import bgImg from '../assets/para-01.jpg';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const Checkout = () => {
     const location = useLocation()
     const foodData = location.state || {}
-    const {user} = use(authContext)
-    console.log(user.email);
+    const { user } = use(authContext)
+    // console.log(user.email);
+    const navigate = useNavigate()
+
+    const { _id, image, name, cuisine, qntity } = foodData
 
 
     const quantity = foodData.qntity || 1
     const price = foodData.price || 0
-    const shipping = 5.52
     const subtotal = price * quantity
-    const total = subtotal + shipping
+
+    let shipping = 0
+    if (subtotal < 79) {
+        shipping = 5.52
+    }
+
+    const total = (subtotal + shipping)
+
+    const handleOrderSubmit = e => {
+        e.preventDefault()
+        const form = e.target
+        const formData = new FormData(form)
+        const data = Object.fromEntries(formData.entries())
+
+
+        const orderDetails = {
+            ...data,
+            foodId: _id,
+            itemName: name,
+            itemImage: image,
+            quantity: qntity,
+            price: price,
+            shipping: shipping,
+            subTotalPrice: subtotal,
+            totalPrice: total,
+            orderTime: new Date().toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })
+        }
+        console.log(orderDetails);
+
+        axios.post('http://localhost:3000/orders', orderDetails)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your Order Has been placed",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/myOrders')
+
+                    return axios.patch(`http://localhost:3000/foods/${_id}`, {
+                        orderedQuantity: qntity
+                    })
+                }
+
+            })
+           
+            .catch(error => {
+                console.log('there is some problem', error);
+            })
+    }
+
 
     return (
         <>
@@ -42,13 +103,18 @@ const Checkout = () => {
                 <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
 
                     {/* Left Column: Form */}
-                    <div className="lg:pr-12 lg:border-r lg:border-base-300">
+                    <form onSubmit={handleOrderSubmit} className="lg:pr-12 lg:border-r lg:border-base-300">
                         {/* Contact Section */}
                         <div className="mb-8">
                             <div className="mb-4">
                                 <h2 className="text-2xl font-semibold">Contact</h2>
                             </div>
-                            <input type="text" defaultValue={user.email} className="input input-bordered w-full mb-2" />
+                            <input
+                                type="text"
+                                value={user.email}
+                                className="input input-bordered w-full mb-2"
+                                name='userEmail' />
+
                             <div className="form-control">
                                 <label className="label cursor-pointer justify-start gap-4">
                                     <input type="checkbox" className="checkbox checkbox-sm" />
@@ -60,20 +126,20 @@ const Checkout = () => {
                         {/* Delivery Section */}
                         <div className="mb-8">
                             <h2 className="text-2xl font-semibold mb-4">Delivery</h2>
-                            <select className="select select-bordered w-full mb-4">
+                            <select className="select select-bordered w-full mb-4" name='country'>
                                 <option>Bangladesh</option>
                                 <option>United Kingdom</option>
                                 <option>United States</option>
                             </select>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <input type="text" placeholder="First name (optional)" className="input input-bordered w-full" />
-                                <input type="text" placeholder="Last name" className="input input-bordered w-full" />
+                                <input type="text" name='firstName' placeholder="First name (optional)" className="input input-bordered w-full" />
+                                <input type="text" name='lastName' placeholder="Last name" className="input input-bordered w-full" />
                             </div>
-                            <input type="text" placeholder="Address" className="input input-bordered w-full mb-4" />
-                            <input type="text" placeholder="Apartment, suite, etc. (optional)" className="input input-bordered w-full mb-4" />
+                            <input type="text" name='address' placeholder="Address" className="input input-bordered w-full mb-4" />
+                            <input type="text" name='apartment' placeholder="Apartment, suite, etc. (optional)" className="input input-bordered w-full mb-4" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <input type="text" placeholder="City" className="input input-bordered w-full" />
-                                <input type="text" placeholder="Postal code (optional)" className="input input-bordered w-full" />
+                                <input type="text" name='city' placeholder="City" className="input input-bordered w-full" />
+                                <input type="text" name='postalCode' placeholder="Postal code (optional)" className="input input-bordered w-full" />
                             </div>
                             <div className="form-control">
                                 <label className="label cursor-pointer justify-start gap-4">
@@ -88,7 +154,7 @@ const Checkout = () => {
                             <h2 className="text-2xl font-semibold mb-4">Shipping method</h2>
                             <div className="p-4 border border-base-300 rounded-lg flex justify-between items-center">
                                 <span>Standard</span>
-                                <span className="font-semibold">$5.52</span>
+                                <span className="font-semibold">${shipping}</span>
                             </div>
                         </div>
 
@@ -118,9 +184,9 @@ const Checkout = () => {
                             </div>
                         </div>
 
-                        <button className="btn btn-warning btn-block text-black">Pay now</button>
+                        <button type='submit' className="btn btn-warning btn-block text-black">Pay now</button>
 
-                    </div>
+                    </form>
 
                     {/* Right Column: Order Summary */}
                     <div className="lg:pl-12">
@@ -129,13 +195,13 @@ const Checkout = () => {
                                 <div className="flex items-center gap-4">
                                     <div className="avatar">
                                         <div className="w-20 rounded-lg relative ring ring-base-300">
-                                             <div className="badge badge-neutral absolute top- right-0 z-10">{foodData.qntity}</div>
-                                            <img src={foodData.image} />
+                                            <div className="badge badge-neutral absolute top- right-0 z-10">{qntity}</div>
+                                            <img src={image} />
                                         </div>
                                     </div>
                                     <div>
-                                        <p className="font-semibold">{foodData.name}</p>
-                                        <p className="text-sm text-base-content/70">{foodData.cuisine}</p>
+                                        <p className="font-semibold">{name}</p>
+                                        <p className="text-sm text-base-content/70">{cuisine}</p>
                                     </div>
                                 </div>
                                 <p className="font-semibold">${price}</p>
@@ -150,7 +216,7 @@ const Checkout = () => {
                                 </div>
                                 <div className="flex justify-between">
                                     <p>Shipping</p>
-                                    <p>$5.52</p>
+                                    <p>${shipping}</p>
                                 </div>
                             </div>
 

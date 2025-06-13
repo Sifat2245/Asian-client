@@ -8,8 +8,9 @@ import { CgNotes } from 'react-icons/cg';
 
 const FoodDetails = () => {
 
-    const { image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
+    const {_id, image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
     // const availableQuantity = quantity
+    // console.log(_id);
 
     const [qntity, setQntity] = useState(1)
     const [maxMessage, setMaxMessage] = useState('')
@@ -32,6 +33,7 @@ const FoodDetails = () => {
     }
 
     const foodData = {
+        _id,
         image,
         name,
         price,
@@ -110,6 +112,10 @@ const FoodDetails = () => {
                                 >
                                     +
                                 </button>
+                                
+                            </div>
+                            <div>
+                                <p>Available: {quantity} items</p>
                             </div>
                             {maxMessage && (
                                 <p className="text-red-600 text-sm mt-2">{maxMessage}</p>
@@ -124,7 +130,7 @@ const FoodDetails = () => {
                         </Link>
 
 
-                        <div className='flex items-center gap-2 mb-3'>
+                        <div className='flex items-center gap-2 my-3'>
                             <TbTruckDelivery className='h-6 w-6' />
                             <p><span className='font-semibold'>Estimated delivery:</span> half an hour</p>
                         </div>
