@@ -3,6 +3,7 @@ import bgImg from '../assets/para-09-1.jpg'
 import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PageTitle from '../hooks/PageTitle';
 
 const AddFood = () => {
 
@@ -50,6 +51,7 @@ const AddFood = () => {
 
     return (
         <div>
+            <PageTitle title={'Add Food - Asian'}></PageTitle>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,

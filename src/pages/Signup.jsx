@@ -4,6 +4,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai'
 import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PageTitle from '../hooks/PageTitle';
 
 const Signup = () => {
 
@@ -115,7 +116,7 @@ const Signup = () => {
                 
 
 
-                axios.post('http://localhost:3000/users', userData)
+                axios.post('https://asian-server-mu.vercel.app/users', userData)
                     .then(res => {
                         if (res.data.insertedId) {
                             Swal.fire({
@@ -155,6 +156,7 @@ const Signup = () => {
 
     return (
         <div className="flex justify-center items-center px-4">
+            <PageTitle title={'Sign Up - Asian'}></PageTitle>
             <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
                 <h2 className="text-3xl font-semibold text-center mb-6">Create Account</h2>
 

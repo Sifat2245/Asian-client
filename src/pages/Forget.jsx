@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import PageTitle from '../hooks/PageTitle';
 
 const Forget = () => {
 
@@ -28,6 +29,7 @@ const Forget = () => {
 
   return (
     <div className="flex justify-center items-center px-4">
+      <PageTitle title={'Reset Password - Asian'}></PageTitle>
       <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Reset Password</h2>
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import bgImg from '../assets/bg.jpg';
 import DishCard from '../components/DishCard';
+import PageTitle from '../hooks/PageTitle';
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -41,6 +42,7 @@ const AllFoods = () => {
 
   return (
     <div>
+      <PageTitle title={'All Foods - Asian'}></PageTitle>
       {/* Hero Section */}
       <div
         style={{

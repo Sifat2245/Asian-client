@@ -5,6 +5,7 @@ import foodImg from '../assets/shop-1.jpg'
 import { FaStar } from 'react-icons/fa';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { CgNotes } from 'react-icons/cg';
+import PageTitle from '../hooks/PageTitle';
 
 const FoodDetails = () => {
 
@@ -43,6 +44,7 @@ const FoodDetails = () => {
 
     return (
         <div>
+            <PageTitle title={`${name} - Asian`}></PageTitle>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,

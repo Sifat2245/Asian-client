@@ -1,10 +1,12 @@
 import React from 'react';
 import bgImg from '../assets/para-09-1.jpg'
+import PageTitle from '../hooks/PageTitle';
 
 
 const MyFood = () => {
     return (
         <div>
+            <PageTitle title={'My Food - Asian'}></PageTitle>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,

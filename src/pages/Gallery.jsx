@@ -13,6 +13,7 @@ import img5 from '../assets/gallery/gallery-6.jpg';
 import img6 from '../assets/gallery/home-01.jpg';
 import img7 from '../assets/gallery/gallery-1.jpg';
 import img8 from '../assets/gallery/gallery-2.jpg';
+import PageTitle from '../hooks/PageTitle';
 
 const Gallery = () => {
     const [open, setOpen] = useState(false);
@@ -36,6 +37,7 @@ const Gallery = () => {
 
     return (
         <div>
+            <PageTitle title={'Our Gallery - Asian'}></PageTitle>
             {/* Banner */}
             <div
                 style={{

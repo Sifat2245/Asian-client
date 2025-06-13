@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PageTitle from '../hooks/PageTitle';
 
 
 const Checkout = () => {
@@ -53,7 +54,7 @@ const Checkout = () => {
         }
         console.log(orderDetails);
 
-        axios.post('http://localhost:3000/orders', orderDetails)
+        axios.post('https://asian-server-mu.vercel.app/orders', orderDetails)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -65,7 +66,7 @@ const Checkout = () => {
                     });
                     navigate('/myOrders')
 
-                    return axios.patch(`http://localhost:3000/foods/${_id}`, {
+                    return axios.patch(`https://asian-server-mu.vercel.app/foods/${_id}`, {
                         orderedQuantity: qntity
                     })
                 }
@@ -80,6 +81,7 @@ const Checkout = () => {
 
     return (
         <>
+        <PageTitle title={'Checkout - Asian'}></PageTitle>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,

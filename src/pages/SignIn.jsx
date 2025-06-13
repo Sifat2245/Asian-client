@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
+import PageTitle from '../hooks/PageTitle';
 
 const SignIn = () => {
 
@@ -44,6 +45,7 @@ const SignIn = () => {
 
   return (
     <div className="flex justify-center items-center px-4">
+      <PageTitle title={'Sign In - Asian'}></PageTitle>
       <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
         <h2 className="text-3xl font-semibold text-center mb-6">Sign In</h2>
 
