@@ -12,6 +12,7 @@ const Signup = () => {
     const [error, setError] = useState('')
     const [password, setPassword] = useState('')
     const [strength, setStrength] = useState('')
+    const [loading, setLoading] = useState(false)
     const [requirements, setRequirements] = useState({
         length: false,
         upper: false,
@@ -21,7 +22,7 @@ const Signup = () => {
     })
     const location = useLocation()
     const navigate = useNavigate()
-    const from = location.pathname || '/';
+    const from = location.state || '/';
     // console.log(password);
     // console.log(location);
 
@@ -75,7 +76,7 @@ const Signup = () => {
 
     const handleSignUp = (e) => {
         setError('')
-
+        setLoading(true)
         e.preventDefault()
         const form = e.target;
         const name = form.name.value
@@ -99,6 +100,7 @@ const Signup = () => {
 
         createUser(email, password)
             .then(result => {
+
                 const user = result.user
                 updateUser({
                     displayName: name,
@@ -106,13 +108,11 @@ const Signup = () => {
                 }).then(() => {
                     setUser({ ...user, displayName: name, photoURL: profile })
                     // console.log(user);
-                    navigate(from)
+
                 })
                     .catch(error => {
                         console.log(error);
                     })
-                
-
 
                 axios.post('https://asian-server-mu.vercel.app/users', userData)
                     .then(res => {
@@ -124,6 +124,10 @@ const Signup = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            setLoading(false)
+                            setTimeout(() => {
+                                navigate(from)
+                            }, 1500);
                         }
                     })
                     .catch(error => {
@@ -330,7 +334,7 @@ const Signup = () => {
                         type="submit"
                         className="block w-full lg:w-[30%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
                     >
-                        Sign Up
+                        {loading ? 'Proceeding...' : 'Sign Up'}
                     </button>
                     {/* Divider */}
                     <div className="divider text-gray-500 text-sm mt-6">OR</div>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
 import PageTitle from '../hooks/PageTitle';
@@ -8,22 +8,27 @@ const SignIn = () => {
   const {loginUser, setUser, googleLogin} = useContext(authContext)
   const location = useLocation()
   const navigate = useNavigate()
-  const from = location.pathname || '/'
+  const from = location.state || '/';
+  const [loading, setLoading] = useState(false)
 
   const handleSignIn = e =>{
     e.preventDefault()
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value
+    setLoading(true)
 
 
     loginUser(email, password)
     .then(result =>{
       const user = result.user
       setUser(user)
+      // console.log(from);
+      setLoading(false)
       navigate(from)
-      console.log(user);
+      // console.log(user);
     })
+    
     .catch(error =>{
       console.log(error);
     })  
@@ -94,7 +99,7 @@ const SignIn = () => {
             type="submit"
             className="block w-full lg:w-[20%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
           >
-            Sign In
+            {loading? 'Proceeding...': 'Sign In'}
           </button>
 
           {/* Divider */}

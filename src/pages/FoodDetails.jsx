@@ -92,6 +92,7 @@ const FoodDetails = () => {
                         <p className="text-xl"><strong>Cuisine:</strong> {cuisine}</p>
                         <p className="text-xl"><strong>Category:</strong> {category}</p>
                         <p className="text-xl"><strong>Total Purchase:</strong> {purchaseCount}</p>
+                        <p className='text-xl'><strong>Available:</strong> {quantity} items</p>
 
                         {/* Quantity Selector */}
                         <div className="flex items-center space-x-4 mt-6">
@@ -116,9 +117,7 @@ const FoodDetails = () => {
                                 </button>
 
                             </div>
-                            <div>
-                                <p>Available: {quantity} items</p>
-                            </div>
+                            
                             {maxMessage && (
                                 <p className="text-red-600 text-sm mt-2">{maxMessage}</p>
                             )}

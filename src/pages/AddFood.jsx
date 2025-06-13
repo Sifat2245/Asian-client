@@ -4,10 +4,13 @@ import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import PageTitle from '../hooks/PageTitle';
+import { useNavigate } from 'react-router';
 
 const AddFood = () => {
 
     const { user } = use(authContext)
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         name: '',
@@ -17,7 +20,7 @@ const AddFood = () => {
         category: '',
         quantity: '',
         description: '',
-        longDescription:'',
+        longDescription: '',
         purchaseCount: '0',
         addedBy: user.email,
     });
@@ -31,6 +34,7 @@ const AddFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log('Food submitted:', formData);
+        setLoading(true)
         const preparedData = {
             ...formData,
             price: parseFloat(formData.price),
@@ -49,8 +53,12 @@ const AddFood = () => {
                         timer: 1500
                     });
                 }
+                navigate('/myFoods')
             })
-            .catch(error =>{
+            .finally(() => {
+                setLoading(false)
+            })
+            .catch(error => {
                 console.log('there is a problem', error);
             })
     };
@@ -171,7 +179,7 @@ const AddFood = () => {
                         type="submit"
                         className="w-1/2 mx-auto block bg-[#DB7137] text-white py-2 rounded hover:bg-[#2c2c2c] transition"
                     >
-                        Add Food
+                        {loading ? 'Adding...' : 'Add Food'}
                     </button>
                 </form>
             </div>

@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import bgImg from '../assets/para-01.jpg';
 import { useLocation, useNavigate } from 'react-router';
 import { authContext } from '../authProvider/AuthProvider';
@@ -13,6 +13,7 @@ const Checkout = () => {
     const { user } = use(authContext)
     // console.log(user.email);
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
 
     const { _id, image, name, cuisine, qntity } = foodData
 
@@ -30,6 +31,7 @@ const Checkout = () => {
 
     const handleOrderSubmit = e => {
         e.preventDefault()
+        setLoading(true)
         const form = e.target
         const formData = new FormData(form)
         const data = Object.fromEntries(formData.entries())
@@ -64,13 +66,19 @@ const Checkout = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/myOrders')
+                    
 
                     return axios.patch(`https://asian-server-mu.vercel.app/foods/${_id}`, {
                         orderedQuantity: qntity
                     })
                 }
 
+            })
+            .finally(() =>{
+                setLoading(false)
+                setTimeout(() => {
+                    navigate('/myOrders')
+                }, 1000);
             })
            
             .catch(error => {
@@ -134,13 +142,13 @@ const Checkout = () => {
                                 <option>United States</option>
                             </select>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <input type="text" name='firstName' placeholder="First name (optional)" className="input input-bordered w-full" />
-                                <input type="text" name='lastName' placeholder="Last name" className="input input-bordered w-full" />
+                                <input type="text" name='firstName' placeholder="First name (optional)" className="input input-bordered w-full" required />
+                                <input type="text" name='lastName' placeholder="Last name" className="input input-bordered w-full" required />
                             </div>
-                            <input type="text" name='address' placeholder="Address" className="input input-bordered w-full mb-4" />
+                            <input type="text" name='address' placeholder="Address" className="input input-bordered w-full mb-4" required />
                             <input type="text" name='apartment' placeholder="Apartment, suite, etc. (optional)" className="input input-bordered w-full mb-4" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <input type="text" name='city' placeholder="City" className="input input-bordered w-full" />
+                                <input type="text" name='city' placeholder="City" className="input input-bordered w-full" required/>
                                 <input type="text" name='postalCode' placeholder="Postal code (optional)" className="input input-bordered w-full" />
                             </div>
                             <div className="form-control">
@@ -186,7 +194,7 @@ const Checkout = () => {
                             </div>
                         </div>
 
-                        <button type='submit' className="btn btn-warning btn-block text-black">Pay now</button>
+                        <button type='submit' className="btn btn-warning btn-block text-black">{loading? 'Proceeding...': 'Pay Now'}</button>
 
                     </form>
 
