@@ -75,7 +75,13 @@ const MyOrders = () => {
                             </thead>
                             <tbody className="divide-y divide-gray-100 text-gray-800 text-sm sm:text-base">
                                 {orders.map((order) => (
-                                    <OrderTableRow order={order} key={order._id}></OrderTableRow>
+                                    <OrderTableRow
+                                        order={order}
+                                        key={order._id}
+                                        onDelete={id => setOrders(prev => prev.filter(o => o._id !== id))}
+                                    >
+
+                                    </OrderTableRow>
                                 ))}
                             </tbody>
                         </table>

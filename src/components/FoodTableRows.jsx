@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { motion, AnimatePresence } from 'motion/react';
 import React, { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
@@ -92,117 +93,130 @@ const FoodTableRows = ({ food }) => {
 
             {/* edit food modal */}
 
-            {editModalOpen && (
-                <div className="fixed inset-0 bg-[#00000094] bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-lg p-8 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
-                        <button
-                            onClick={() => setEditModalOpen(false)}
-                            className="absolute top-4 right-4 text-gray-600 hover:text-black"
+            <AnimatePresence>
+                {editModalOpen && (
+                    <motion.div
+                        className="fixed inset-0 bg-[#00000094] bg-opacity-50 flex justify-center items-center z-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <motion.div
+                            className="bg-white rounded-lg p-8 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
+                            initial={{ y: 50, opacity: 0, scale: 0.95 }}
+                            animate={{ y: 0, opacity: 1, scale: 1 }}
+                            exit={{ y: 50, opacity: 0, scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         >
-                            ✕
-                        </button>
-
-                        <h2 className="text-2xl font-bold mb-6">Edit Food Details</h2>
-                        <form onSubmit={handleUpdate} className="space-y-8">
-                            <label htmlFor="foodName">Food Name</label>
-                            <input
-                                type="text"
-                                id='foodName'
-                                name="name"
-                                placeholder="Food Name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="foodImage">Food Image</label>
-                            <input
-                                type="url"
-                                id='foodImage'
-                                name="image"
-                                placeholder="Image URL"
-                                value={formData.image}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="foodPrice">Food Price</label>
-                            <input
-                                type="number"
-                                id='foodPrice'
-                                name="price"
-                                placeholder="Price"
-                                value={formData.price}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="cuisin">Cuisine</label>
-                            <input
-                                type="text"
-                                id='cuisin'
-                                name="cuisine"
-                                placeholder="Cuisine (e.g., Italian, Bangladeshi, Chinese)"
-                                value={formData.cuisine}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="cat">Category</label>
-                            <input
-                                type="text"
-                                id='cat'
-                                name="category"
-                                placeholder="Category (e.g., Dessert, Main Course)"
-                                value={formData.category}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="foodQuantity">Quantity</label>
-                            <input
-                                type="number"
-                                id='foodQuantity'
-                                name="quantity"
-                                placeholder="Quantity"
-                                value={formData.quantity}
-                                onChange={handleChange}
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="Desc">Description</label>
-                            <textarea
-                                id='Desc'
-                                name="description"
-                                placeholder="Description"
-                                value={formData.description}
-                                onChange={handleChange}
-                                rows="3"
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
-                            <label htmlFor="longDescription">Detailed Content</label>
-                            <textarea
-                                id='longDescription'
-                                name="longDescription"
-                                placeholder="Write Detailed Content"
-                                value={formData.longDescription}
-                                onChange={handleChange}
-                                rows="5"
-                                className="w-full p-2 mt-2 border border-gray-300 rounded"
-                                required
-                            />
                             <button
-                                type="submit"
-                                className="w-1/2 mx-auto block bg-[#DB7137] text-white py-2 rounded hover:bg-[#2c2c2c] transition"
+                                onClick={() => setEditModalOpen(false)}
+                                className="absolute top-4 right-4 text-gray-600 hover:text-black"
                             >
-                                {loading? 'Updating...' : 'Update'} 
+                                ✕
                             </button>
-                        </form>
 
-                    </div>
-                </div>
-            )}
+                            <h2 className="text-2xl font-bold mb-6">Edit Food Details</h2>
+                            <form onSubmit={handleUpdate} className="space-y-8">
+                                <label htmlFor="foodName">Food Name</label>
+                                <input
+                                    type="text"
+                                    id='foodName'
+                                    name="name"
+                                    placeholder="Food Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="foodImage">Food Image</label>
+                                <input
+                                    type="url"
+                                    id='foodImage'
+                                    name="image"
+                                    placeholder="Image URL"
+                                    value={formData.image}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="foodPrice">Food Price</label>
+                                <input
+                                    type="number"
+                                    id='foodPrice'
+                                    name="price"
+                                    placeholder="Price"
+                                    value={formData.price}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="cuisin">Cuisine</label>
+                                <input
+                                    type="text"
+                                    id='cuisin'
+                                    name="cuisine"
+                                    placeholder="Cuisine (e.g., Italian, Bangladeshi, Chinese)"
+                                    value={formData.cuisine}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="cat">Category</label>
+                                <input
+                                    type="text"
+                                    id='cat'
+                                    name="category"
+                                    placeholder="Category (e.g., Dessert, Main Course)"
+                                    value={formData.category}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="foodQuantity">Quantity</label>
+                                <input
+                                    type="number"
+                                    id='foodQuantity'
+                                    name="quantity"
+                                    placeholder="Quantity"
+                                    value={formData.quantity}
+                                    onChange={handleChange}
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="Desc">Description</label>
+                                <textarea
+                                    id='Desc'
+                                    name="description"
+                                    placeholder="Description"
+                                    value={formData.description}
+                                    onChange={handleChange}
+                                    rows="3"
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <label htmlFor="longDescription">Detailed Content</label>
+                                <textarea
+                                    id='longDescription'
+                                    name="longDescription"
+                                    placeholder="Write Detailed Content"
+                                    value={formData.longDescription}
+                                    onChange={handleChange}
+                                    rows="5"
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded"
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="w-1/2 mx-auto block bg-[#DB7137] text-white py-2 rounded hover:bg-[#2c2c2c] transition"
+                                >
+                                    {loading ? 'Updating...' : 'Update'}
+                                </button>
+                            </form>
+
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 };

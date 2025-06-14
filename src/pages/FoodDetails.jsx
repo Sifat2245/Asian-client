@@ -1,22 +1,25 @@
 import React, { use, useState } from 'react';
 import bgImg from '../assets/bg.jpg'
 import { Link, useLoaderData } from 'react-router';
-import foodImg from '../assets/shop-1.jpg'
 import { FaStar } from 'react-icons/fa';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { CgNotes } from 'react-icons/cg';
 import PageTitle from '../hooks/PageTitle';
-import Lottie from 'lottie-react';
-import loader from '../../public/loader.json'
+import { authContext } from '../authProvider/AuthProvider';
+
+
 
 const FoodDetails = () => {
 
-    const { _id, image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription } = useLoaderData()
+    const { _id, image, name, description, price, cuisine, category, quantity, purchaseCount, longDescription, addedBy } = useLoaderData()
     // const availableQuantity = quantity
     // console.log(_id);
 
     const [qntity, setQntity] = useState(1)
     const [maxMessage, setMaxMessage] = useState('')
+    const {user} = use(authContext)
+
+    const isOwner = user?.email === addedBy
 
 
     const handleDecrease = () => {
@@ -46,15 +49,7 @@ const FoodDetails = () => {
     }
 
 
-    if (navigation.state === 'loading') {
-        return (
-            <div className='min-h-screen flex justify-center items-center'>
-                <div className='w-52'>
-                    <Lottie animationData={loader} loop={true}></Lottie>
-                </div>
-            </div>
-        )
-    }
+    
 
     return (
         <div>
@@ -145,16 +140,19 @@ const FoodDetails = () => {
                             state={foodData}>
                             <button
                                 className={`w-2/3 tracking-widest rounded-sm transition-all duration-300 border-0 text-white px-4 py-2 lg:px-4 lg:py-2 
-                                    ${quantity === 0
+                                    ${quantity === 0 || isOwner
                                         ? 'bg-[#f7a274] hover:cursor-not-allowed'
                                         : 'bg-[#DB7137] hover:bg-[#272727] hover:cursor-pointer'}`}
-                                disabled={quantity === 0}
+                                disabled={quantity === 0 || isOwner}
                             >Order Now</button>
                         </Link>
 
                         <div className='my-3'>
                             {quantity === 0 && (
                                 <p className='text-red-600'>Item is not available right now</p>
+                            )}
+                            {isOwner && (
+                                <p className='text-red-600'>You can not buy your own added food</p>
                             )}
                         </div>
 

@@ -44,13 +44,13 @@ const AllFoods = () => {
     setFilteredFoods(filtered);
   }, [searchTerm, priceFilter, foods]);
 
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <div className='min-h-screen flex justify-center items-center'>
-                <div className='w-52'>
-                    <Lottie animationData={loader} loop={true}></Lottie>
-                </div>
-            </div>
+        <div className='w-52'>
+          <Lottie animationData={loader} loop={true}></Lottie>
+        </div>
+      </div>
     )
   }
 
