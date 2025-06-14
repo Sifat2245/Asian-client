@@ -6,6 +6,8 @@ import { FaStar } from 'react-icons/fa';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { CgNotes } from 'react-icons/cg';
 import PageTitle from '../hooks/PageTitle';
+import Lottie from 'lottie-react';
+import loader from '../../public/loader.json'
 
 const FoodDetails = () => {
 
@@ -15,6 +17,7 @@ const FoodDetails = () => {
 
     const [qntity, setQntity] = useState(1)
     const [maxMessage, setMaxMessage] = useState('')
+
 
     const handleDecrease = () => {
         if (qntity > 1) {
@@ -40,6 +43,17 @@ const FoodDetails = () => {
         price,
         cuisine,
         qntity,
+    }
+
+
+    if (navigation.state === 'loading') {
+        return (
+            <div className='min-h-screen flex justify-center items-center'>
+                <div className='w-52'>
+                    <Lottie animationData={loader} loop={true}></Lottie>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -117,7 +131,7 @@ const FoodDetails = () => {
                                 </button>
 
                             </div>
-                            
+
                             {maxMessage && (
                                 <p className="text-red-600 text-sm mt-2">{maxMessage}</p>
                             )}

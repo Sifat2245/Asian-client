@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import bgImg from '../assets/bg.jpg';
 import DishCard from '../components/DishCard';
 import PageTitle from '../hooks/PageTitle';
+import Lottie from 'lottie-react';
+import loader from '../../public/loader.json'
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [priceFilter, setPriceFilter] = useState('all');
   const [filteredFoods, setFilteredFoods] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('https://asian-server-mu.vercel.app/foods')
@@ -15,6 +18,7 @@ const AllFoods = () => {
       .then(data => {
         setFoods(data);
         setFilteredFoods(data);
+        setLoading(false)
       });
   }, []);
 
@@ -39,6 +43,16 @@ const AllFoods = () => {
 
     setFilteredFoods(filtered);
   }, [searchTerm, priceFilter, foods]);
+
+  if(loading){
+    return(
+      <div className='min-h-screen flex justify-center items-center'>
+                <div className='w-52'>
+                    <Lottie animationData={loader} loop={true}></Lottie>
+                </div>
+            </div>
+    )
+  }
 
   return (
     <div>

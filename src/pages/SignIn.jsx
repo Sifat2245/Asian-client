@@ -99,7 +99,7 @@ const SignIn = () => {
             type="submit"
             className="block w-full lg:w-[20%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
           >
-            {loading? 'Proceeding...': 'Sign In'}
+            {loading? <span className="loading loading-spinner loading-md"></span>: 'Sign In'}
           </button>
 
           {/* Divider */}

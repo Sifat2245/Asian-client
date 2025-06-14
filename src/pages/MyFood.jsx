@@ -4,12 +4,15 @@ import PageTitle from '../hooks/PageTitle';
 import { authContext } from '../authProvider/AuthProvider';
 import axios from 'axios';
 import FoodTableRows from '../components/FoodTableRows';
+import Lottie from 'lottie-react';
+import loader from '../../public/loader.json'
 
 
 const MyFood = () => {
 
     const [foods, setFoods] = useState([])
     const { user } = use(authContext)
+    const [loading, setLoading] = useState(true)
    
 
     useEffect(() => {
@@ -18,9 +21,20 @@ const MyFood = () => {
                 .then(res => {
                     const foodData = res.data
                     setFoods(foodData)
+                    setLoading(false)
                 })
         }
     }, [user?.email])
+
+    if(loading){
+    return(
+      <div className='min-h-screen flex justify-center items-center'>
+                <div className='w-52'>
+                    <Lottie animationData={loader} loop={true}></Lottie>
+                </div>
+            </div>
+    )
+  }
 
 
     return (

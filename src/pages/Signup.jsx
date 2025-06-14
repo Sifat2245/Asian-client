@@ -334,7 +334,7 @@ const Signup = () => {
                         type="submit"
                         className="block w-full lg:w-[30%] mx-auto bg-[#DB7137] text-white py-2 rounded-md hover:bg-[#272727] transition"
                     >
-                        {loading ? 'Proceeding...' : 'Sign Up'}
+                        {loading ? <span className="loading loading-spinner loading-md"></span> : 'Sign Up'}
                     </button>
                     {/* Divider */}
                     <div className="divider text-gray-500 text-sm mt-6">OR</div>
