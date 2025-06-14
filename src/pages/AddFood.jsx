@@ -53,10 +53,13 @@ const AddFood = () => {
                         timer: 1500
                     });
                 }
-                navigate('/myFoods')
+
             })
             .finally(() => {
                 setLoading(false)
+                setTimeout(() => {
+                    navigate('/myFoods')
+                }, 1500);
             })
             .catch(error => {
                 console.log('there is a problem', error);

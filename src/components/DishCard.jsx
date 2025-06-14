@@ -1,7 +1,6 @@
 import { FaEye, FaShoppingBag, FaHeart, FaStar } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip';
 import { motion } from "framer-motion";
-import img from '../assets/shop-1.jpg';
 import { Link } from "react-router";
 
 

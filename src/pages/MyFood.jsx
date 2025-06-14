@@ -47,7 +47,7 @@ const MyFood = () => {
                 <div>
                     <div className="overflow-x-auto mt-10 px-2 md:px-6 lg:px-10 my-32">
                         {foods.length > 0 ?
-                            <table className="min-w-full bg-white rounded-xl overflow-hidden shadow-md border border-gray-200">
+                            <table className="min-w-4/5 mx-auto bg-white rounded-xl overflow-hidden shadow-md border border-gray-200">
                                 <thead className="bg-[#DB7137] text-white text-sm sm:text-base">
                                     <tr>
                                         <th className="py-4 px-3 text-left">Image</th>

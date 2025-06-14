@@ -47,12 +47,7 @@ const Checkout = () => {
             shipping: shipping,
             subTotalPrice: subtotal,
             totalPrice: total,
-            orderTime: new Date().toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            })
+            orderTime: new Date().toISOString()
         }
         console.log(orderDetails);
 
