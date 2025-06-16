@@ -65,13 +65,14 @@ const DishCard = ({ food }) => {
                     {/* Hover Buttons */}
                     <div className="absolute top-6 right-6 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {[
-                            { icon: <FaEye onClick={() => setQuickViewModalOpen(true)} />, tip: "View Details", id: "tooltip-eye" },
+                            { icon: <FaEye />, tip: "Quick View", id: "tooltip-eye", onClick:() => setQuickViewModalOpen(true) },
                             { icon: <FaShoppingBag />, tip: "Add to Cart", id: "tooltip-cart" },
                             { icon: <FaHeart />, tip: "Add to Favorites", id: "tooltip-heart" },
-                        ].map(({ icon, tip, id }, idx) => (
+                        ].map(({ icon, tip, id, onClick }, idx) => (
                             <motion.button
                                 key={id}
                                 className="bg-[#DB7137] text-white p-3 rounded shadow hover:bg-[#272727]"
+                                onClick={onClick}
                                 data-tooltip-id={id}
                                 data-tooltip-content={tip}
                                 initial={{ opacity: 0, x: 40 }}

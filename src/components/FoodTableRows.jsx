@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';// eslint-disable-line no-unused-vars
 import React, { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';

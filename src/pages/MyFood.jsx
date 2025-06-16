@@ -13,18 +13,24 @@ const MyFood = () => {
     const [foods, setFoods] = useState([])
     const { user } = use(authContext)
     const [loading, setLoading] = useState(true)
+
+    const token =  user.accessToken
    
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://asian-server-mu.vercel.app/food/${user.email}`)
+            axios.get(`https://asian-server-mu.vercel.app/food/${user.email}`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            })
                 .then(res => {
                     const foodData = res.data
                     setFoods(foodData)
                     setLoading(false)
                 })
         }
-    }, [user?.email])
+    }, [user?.email, token])
 
     if(loading){
     return(

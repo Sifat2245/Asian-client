@@ -14,16 +14,23 @@ const MyOrders = () => {
     const { user } = use(authContext)
     const [loading, setLoading] = useState(true)
 
+    const token = user.accessToken
+    // console.log(token);
+
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://asian-server-mu.vercel.app/order/${user.email}`)
+            axios.get(`https://asian-server-mu.vercel.app/order/${user.email}`,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
                 .then(res => {
                     const myOrders = res.data
                     setOrders(myOrders)
                     setLoading(false)
                 })
         }
-    }, [user?.email])
+    }, [user?.email, token])
 
     if (loading) {
         return (
