@@ -54,7 +54,7 @@ const OrderTableRow = ({ order, onDelete }) => {
     return (
         <>
 
-            <tr key={order._id} className="hover:bg-orange-50 transition">
+            <tr key={order._id} className="dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:bg-orange-50 transition">
                 <td className="py-3 px-3">
                     <img
                         src={order.itemImage}
@@ -62,12 +62,12 @@ const OrderTableRow = ({ order, onDelete }) => {
                         className="w-12 h-12 rounded-md object-cover border"
                     />
                 </td>
-                <td className="py-3 px-3 font-medium">{order.itemName}</td>
-                <td className="py-3 px-3 font-medium">${order.price}</td>
-                <td className="py-3 px-3">{order.quantity}</td>
-                <td className="py-3 px-3">${order.subTotalPrice}</td>
+                <td className="py-3 px-3 font-medium dark:text-[#D8D8D8]">{order.itemName}</td>
+                <td className="py-3 px-3 font-medium dark:text-[#D8D8D8]">${order.price}</td>
+                <td className="py-3 px-3 dark:text-[#D8D8D8]">{order.quantity}</td>
+                <td className="py-3 px-3 dark:text-[#D8D8D8]">${order.subTotalPrice}</td>
 
-                <td className="py-3 px-3">
+                <td className="py-3 px-3 dark:text-[#D8D8D8]">
                     {relativeTime}
 
                 </td>
@@ -95,14 +95,14 @@ const OrderTableRow = ({ order, onDelete }) => {
             <AnimatePresence>
                 {summeryModalOpen && (
                     <motion.div
-                        className="fixed inset-0 bg-[#00000070] bg-opacity-75 flex justify-center items-center z-50 p-4"
+                        className=" fixed inset-0 bg-[#00000070] bg-opacity-75 flex justify-center items-center z-50 p-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
 
                     >
                         <motion.div
-                            className="bg-white rounded-2xl p-8 md:p-10 w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl relative"
+                            className="dark:bg-[#2e2e2e] transition-all duration-300 bg-white rounded-2xl p-8 md:p-10 w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl relative"
                             initial={{ y: 50, opacity: 0, scale: 0.95 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 50, opacity: 0, scale: 0.95 }}
@@ -118,40 +118,40 @@ const OrderTableRow = ({ order, onDelete }) => {
 
                             {/* Header */}
                             <div className="text-center mb-8">
-                                <h2 className="text-3xl font-bold text-gray-800">Order Summary</h2>
-                                <p className="text-gray-500 mt-2">Thank you for your purchase!</p>
+                                <h2 className="text-3xl font-bold text-gray-800 dark:text-[#D8D8D8]">Order Summary</h2>
+                                <p className="text-gray-500 mt-2 dark:text-[#D8D8D8]">Thank you for your purchase!</p>
                             </div>
 
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                                 {/* Left Column: Item Details */}
-                                <div className="lg:col-span-1 lg:border-r lg:pr-8">
+                                <div className="lg:col-span-1 lg:border-r dark:border-[#5f5f5f] lg:pr-8">
                                     <img
                                         src={order.itemImage}
                                         alt={order.itemName}
                                         className="rounded-xl w-full object-cover shadow-md mb-4"
                                     />
-                                    <h3 className="text-xl font-semibold text-gray-800">{order.itemName}</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.itemName}</h3>
                                     <p className="text-sm text-gray-500 mt-1">Ordered on: {new Date(order.orderTime).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
                                     <div className="mt-6 space-y-3">
                                         <div className="flex justify-between">
                                             <span className="text-gray-500">Price:</span>
-                                            <span className="font-medium text-gray-800">${order.price.toFixed(2)}</span>
+                                            <span className="font-medium text-gray-800 dark:text-[#D8D8D8]">${order.price.toFixed(2)}</span>
                                         </div>
                                         <div className="flex justify-between">
                                             <span className="text-gray-500">Quantity:</span>
-                                            <span className="font-medium text-gray-800">{order.quantity}</span>
+                                            <span className="font-medium text-gray-800 dark:text-[#D8D8D8]">{order.quantity}</span>
                                         </div>
                                         <div className="flex justify-between">
                                             <span className="text-gray-500">Shipping:</span>
-                                            <span className="font-medium text-gray-800">${order.shipping.toFixed(2)}</span>
+                                            <span className="font-medium text-gray-800 dark:text-[#D8D8D8]">${order.shipping.toFixed(2)}</span>
                                         </div>
                                     </div>
 
-                                    <div className="mt-6 pt-4 border-t">
+                                    <div className="mt-6 pt-4 border-t dark:border-[#6b6b6b]">
                                         <div className="flex justify-between font-semibold">
                                             <span className="text-gray-600">Subtotal:</span>
-                                            <span className="text-gray-800">${order.subTotalPrice.toFixed(2)}</span>
+                                            <span className="text-gray-800 dark:text-[#D8D8D8]">${order.subTotalPrice.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -161,35 +161,35 @@ const OrderTableRow = ({ order, onDelete }) => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <p className="text-sm text-gray-500">Your Email</p>
-                                            <p className="font-semibold text-gray-800">{order.userEmail}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.userEmail}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">Country</p>
-                                            <p className="font-semibold text-gray-800">{order.country}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.country}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">First Name</p>
-                                            <p className="font-semibold text-gray-800">{order.firstName || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.firstName || '—'}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">Last Name</p>
-                                            <p className="font-semibold text-gray-800">{order.lastName || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.lastName || '—'}</p>
                                         </div>
                                         <div className="md:col-span-2">
                                             <p className="text-sm text-gray-500">Address</p>
-                                            <p className="font-semibold text-gray-800">{order.address || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.address || '—'}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">City</p>
-                                            <p className="font-semibold text-gray-800">{order.city || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.city || '—'}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">Postal Code</p>
-                                            <p className="font-semibold text-gray-800">{order.postalCode || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.postalCode || '—'}</p>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">Apartment</p>
-                                            <p className="font-semibold text-gray-800">{order.apartment || '—'}</p>
+                                            <p className="font-semibold text-gray-800 dark:text-[#D8D8D8]">{order.apartment || '—'}</p>
                                         </div>
                                     </div>
 

@@ -159,13 +159,13 @@ const Signup = () => {
     return (
         <div className="flex justify-center items-center px-4">
             <PageTitle title={'Sign Up - Asian'}></PageTitle>
-            <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
+            <div className="bg-white p-8 rounded-2xl lg:w-[40%] dark:bg-[#2e2e2e] transition-all duration-300">
                 <h2 className="text-3xl font-semibold text-center mb-6">Create Account</h2>
 
                 <form onSubmit={handleSignUp}>
                     {/* Name */}
                     <div className="mb-5">
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="name" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
                             Name
                         </label>
                         <input
@@ -179,7 +179,7 @@ const Signup = () => {
 
                     {/* Profile Image */}
                     <div className="mb-5">
-                        <label htmlFor="profileImg" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="profileImg" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
                             Profile Image URL
                         </label>
                         <input
@@ -193,7 +193,7 @@ const Signup = () => {
 
                     {/* Email */}
                     <div className="mb-5">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="email" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
                             Email
                         </label>
                         <input
@@ -207,7 +207,7 @@ const Signup = () => {
 
                     {/* Password */}
                     <div className="mb-5">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="password" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
                             Password
                         </label>
                         <input
@@ -308,7 +308,7 @@ const Signup = () => {
 
                     {/* Confirm Password */}
                     <div className="mb-5">
-                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="confirmPassword" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
                             Confirm Password
                         </label>
                         <input
@@ -324,7 +324,7 @@ const Signup = () => {
                     {/* Terms and Conditions */}
                     <div className="flex items-center mb-6">
                         <input type="checkbox" id="terms" className="form-checkbox mr-2" required />
-                        <label htmlFor="terms" className="text-sm text-gray-700">
+                        <label htmlFor="terms" className="dark:text-[#D8D8D8] text-sm text-gray-700">
                             I agree to the <span className="text-[#DB7137] underline">Terms & Conditions</span>
                         </label>
                     </div>
@@ -354,7 +354,7 @@ const Signup = () => {
                     </button>
 
                     {/* Already have an account */}
-                    <p className="mt-6 text-center text-sm text-gray-600">
+                    <p className="mt-6 text-center text-sm text-gray-600 dark:text-[#D8D8D8]">
                         Already have an account?{' '}
                         <Link to="/user/signin" className="text-[#DB7137] hover:underline">
                             Sign In

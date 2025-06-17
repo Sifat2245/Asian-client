@@ -29,12 +29,12 @@ const Footer = () => {
     return (
         <>
             <div
-                className="relative bg-cover bg-center py-28 w-full px-4"
+                className="relative bg-cover bg-center py-28 w-full px-4 "
                 style={{ backgroundImage: `url(${footerImg})` }}
             >
                 <div className="absolute inset-0 bg-[#2e2e2ec9] z-0"></div>
 
-                <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white max-w-6xl mx-auto items-center gap-y-12">
+                <div className=" relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white max-w-6xl mx-auto items-center gap-y-12">
                     
                     {/* Social + Message */}
                     <div className="flex flex-col items-center text-center">
@@ -87,7 +87,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="bg-white text-black text-lg text-center py-3 font-light">
+            <div className="bg-white text-black text-lg text-center py-3 font-light dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300">
                 <p>Copyright © {new Date().getFullYear()} Asian Restaurant</p>
             </div>
         </>

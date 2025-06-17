@@ -1,14 +1,18 @@
 import { Link, NavLink } from "react-router";
 import { useContext, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import logo from '../assets/logo-white.png';
 import { authContext } from "../authProvider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
+import { useDarkMode } from "../context/ThemeProvider";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const { user, logout } = useContext(authContext);
+
+    const { darkMode, setDarkMode } = useDarkMode()
 
     const navClass = ({ isActive }) =>
         `pb-1 ${isActive ? "border-b-2 border-white" : ""} font-light`;
@@ -63,11 +67,10 @@ const Navbar = () => {
 
                 {/* User Dropdown */}
                 <div className="dropdown dropdown-end">
-                    {user && (
-                        <label tabIndex={0} className="hover:cursor-pointer">
-                            <FaRegUserCircle className="h-6 w-6 mb-2" />
-                        </label>
-                    )}
+                    <label tabIndex={0} className="hover:cursor-pointer">
+                        <FaRegUserCircle className="h-6 w-6 mb-2" />
+                    </label>
+
                     <ul
                         tabIndex={0}
                         className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-[#2c2c2c] rounded-box w-52 text-white space-y-2"
@@ -83,6 +86,37 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
+
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="relative flex items-center justify-center w-8 h-8 mb-2 rounded-full shadow-md transition duration-300"
+                >
+                    <AnimatePresence mode="wait" initial={false}>
+                        {darkMode ? (
+                            <motion.span
+                                key="moon"
+                                initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                                exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-yellow-300 text-xl"
+                            >
+                                <FaMoon />
+                            </motion.span>
+                        ) : (
+                            <motion.span
+                                key="sun"
+                                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-yellow-500 text-xl"
+                            >
+                                <FaSun />
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </button>
 
                 {/* Auth Buttons */}
                 {user ? (
@@ -124,6 +158,42 @@ const Navbar = () => {
                         </div>
                         {getLeftLinks(() => setOpen(false))}
                         {getRightLinks(() => setOpen(false))}
+                        <button
+                            onClick={() => setDarkMode(!darkMode)}
+                            className="relative w-13 h-5 bg-gray-300 dark:bg-gray-600 rounded-full px-0.5 py-0.5 flex items-center transition-colors duration-300"
+                        >
+                            <motion.div
+                                className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white flex items-center justify-center shadow-md"
+                                animate={{ x: darkMode ? 32 : 0 }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                            >
+                                <AnimatePresence mode="wait" initial={false}>
+                                    {darkMode ? (
+                                        <motion.span
+                                            key="moon"
+                                            initial={{ rotate: 90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: -90, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="text-yellow-400 text-[10px]"
+                                        >
+                                            <FaMoon />
+                                        </motion.span>
+                                    ) : (
+                                        <motion.span
+                                            key="sun"
+                                            initial={{ rotate: -90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: 90, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="text-yellow-500 text-[10px]"
+                                        >
+                                            <FaSun />
+                                        </motion.span>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        </button>
                     </div>
                     {user ? (
                         <button

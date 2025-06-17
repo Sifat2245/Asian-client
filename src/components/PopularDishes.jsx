@@ -9,7 +9,7 @@ const PopularDishes = ({ FoodPromise }) => {
             <div className='mt-24 mb-18 px-8'>
                 <div className='text-center'>
                     <h1 className='text-3xl lg:text-5xl font-light'>Our Popular Dishes</h1>
-                    <p className='text-sm lg:text-xl mt-3 text-[#0000005e]'>Craving something everyone loves? <br />
+                    <p className='text-sm lg:text-xl mt-3 text-[#0000005e] dark:text-[#D8D8D8] '>Craving something everyone loves? <br />
                         These are the top picks on our menu!</p>
                 </div>
             </div>

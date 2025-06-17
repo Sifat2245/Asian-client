@@ -11,7 +11,7 @@ const MainLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            {isLoading ? (<div className='min-h-screen flex justify-center items-center'>
+            {isLoading ? (<div className='min-h-screen flex justify-center items-center dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
                 <div className='w-52'>
                     <Lottie animationData={loader} loop={true}></Lottie>
                 </div>

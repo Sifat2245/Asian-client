@@ -46,7 +46,7 @@ const AllFoods = () => {
 
   if (loading) {
     return (
-      <div className='min-h-screen flex justify-center items-center'>
+      <div className='min-h-screen flex justify-center items-center dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
         <div className='w-52'>
           <Lottie animationData={loader} loop={true}></Lottie>
         </div>
@@ -55,7 +55,7 @@ const AllFoods = () => {
   }
 
   return (
-    <div>
+    <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
       <PageTitle title={'All Foods - Asian'}></PageTitle>
       {/* Hero Section */}
       <div
@@ -101,7 +101,7 @@ const AllFoods = () => {
       </div>
 
       {/* Food Grid */}
-      <div className="my-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-3/4 mx-auto">
+      <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-3/4 mx-auto">
         {filteredFoods.length > 0 ? (
           filteredFoods.map((food) => (
             <DishCard food={food} key={food._id}></DishCard>

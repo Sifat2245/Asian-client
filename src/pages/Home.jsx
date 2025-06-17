@@ -10,7 +10,7 @@ const FoodPromise = fetch('https://asian-server-mu.vercel.app/top-purchase').the
 
 const Home = () => {
     return (
-        <div>
+        <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
             <Hero></Hero>
             <PopularDishes FoodPromise={FoodPromise}></PopularDishes>
             <Gallery></Gallery>

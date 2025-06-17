@@ -6,7 +6,7 @@ import bgImg from '../assets/para-01.jpg';
 
 const AuthLayot = () => {
     return (
-        <div>
+        <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,
@@ -27,7 +27,7 @@ const AuthLayot = () => {
 
             </div>
 
-            <div className='my-24'>
+            <div className='my-24 dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
                 <Outlet />
             </div>
             <div>

@@ -67,7 +67,7 @@ const AddFood = () => {
     };
 
     return (
-        <div>
+        <div className='dark:bg-[#3E3E3E] dark:text-[#D8D8D8] transition-all duration-300'>
             <PageTitle title={'Add Food - Asian'}></PageTitle>
             <div
                 style={{
@@ -76,7 +76,7 @@ const AddFood = () => {
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
                 }}
-                className="relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1ba9] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
+                className=" relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1ba9] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0"></div>
 
@@ -87,7 +87,7 @@ const AddFood = () => {
                 </div>
             </div>
 
-            <div className="max-w-xl mx-auto my-24 p-6 bg-white rounded-xl">
+            <div className="dark:bg-[#3E3E3E] dark:text-[#D8D8D8] transition-all duration-300 max-w-xl mx-auto py-24 p-6 bg-white rounded-xl">
                 <h2 className="text-2xl font-bold mb-6 text-center">Add New Food</h2>
                 <form onSubmit={handleSubmit} className="space-y-8">
                     <label htmlFor="foodName">Food Name</label>

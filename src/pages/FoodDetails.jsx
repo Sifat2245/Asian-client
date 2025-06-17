@@ -52,7 +52,7 @@ const FoodDetails = () => {
     
 
     return (
-        <div>
+        <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
             <PageTitle title={`${name} - Asian`}></PageTitle>
             <div
                 style={{
@@ -61,7 +61,7 @@ const FoodDetails = () => {
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
                 }}
-                className="relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1b98] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
+                className="dark:bg-[#3E3E3E] dark:text-[#D8D8D8] transition-all duration-300 relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1b98] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0"></div>
 
@@ -72,7 +72,7 @@ const FoodDetails = () => {
                 </div>
             </div>
 
-            <div className="my-24 max-w-5xl mx-auto px-4">
+            <div className="py-24 max-w-5xl mx-auto px-4">
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Image */}
                     <div className="w-full lg:w-1/2">
@@ -86,7 +86,7 @@ const FoodDetails = () => {
                     {/* Details */}
                     <div className="space-y-6 w-full lg:w-1/2">
                         <h1 className="text-3xl sm:text-4xl font-semibold">{name}</h1>
-                        <p className="text-gray-700">{description}</p>
+                        <p className="text-gray-700 dark:text-[#D8D8D8]">{description}</p>
 
                         {/* Rating */}
                         <div className="flex items-center gap-1 text-yellow-500 text-base">

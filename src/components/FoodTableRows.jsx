@@ -61,12 +61,12 @@ const FoodTableRows = ({ food }) => {
     return (
         <>
 
-            <tr key={food._id} className="hover:bg-orange-50 transition">
+            <tr key={food._id} className="hover:bg-orange-50 dark:hover:bg-neutral-500 transition dark:bg-[#1f1f1f] dark:text-[#D8D8D8] duration-300">
                 <td className="py-3 px-3">
                     <img
                         src={food.image}
                         alt={food.name}
-                        className="w-12 h-12 rounded-md object-cover border"
+                        className="w-12 h-12 rounded-md object-cover border dark:border-neutral-600"
                     />
                 </td>
                 <td className="py-3 px-3 font-medium">{food.name}</td>
@@ -96,13 +96,13 @@ const FoodTableRows = ({ food }) => {
             <AnimatePresence>
                 {editModalOpen && (
                     <motion.div
-                        className="fixed inset-0 bg-[#00000094] bg-opacity-50 flex justify-center items-center z-50"
+                        className="fixed inset-0 bg-[#00000094] bg-opacity-50 flex justify-center items-center z-50 "
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-white rounded-lg p-8 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
+                            className="dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300 bg-white rounded-lg p-8 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
                             initial={{ y: 50, opacity: 0, scale: 0.95 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 50, opacity: 0, scale: 0.95 }}
@@ -110,7 +110,7 @@ const FoodTableRows = ({ food }) => {
                         >
                             <button
                                 onClick={() => setEditModalOpen(false)}
-                                className="absolute top-4 right-4 text-gray-600 hover:text-black"
+                                className="absolute top-4 right-4 text-gray-600 dark:text-[#D8D8D8] hover:text-black dark:hover:text-neutral-400"
                             >
                                 ✕
                             </button>

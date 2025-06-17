@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence, delay } from 'framer-motion';
+import { motion, AnimatePresence, delay } from 'framer-motion'; // eslint-disable-line no-unused-vars
+
 import img1 from '../assets/para-02.jpg';
 import img2 from '../assets/para-03.jpg';
 import img3 from '../assets/para-03 - Copy.jpg';
@@ -52,7 +53,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-screen overflow-hidden">
+        <div className="relative w-full h-screen overflow-hidden dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={slides[current].id}

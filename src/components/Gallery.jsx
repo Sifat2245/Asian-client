@@ -25,7 +25,7 @@ const Gallery = () => {
         <section className="mb-24">
             <div className="text-center">
                 <h2 className="text-4xl font-bold mb-4">Gallery</h2>
-                <p className="text-gray-600 mb-12">Explore our food moments captured in stunning visuals.</p>
+                <p className="text-gray-600 mb-12 dark:text-[#D8D8D8] ">Explore our food moments captured in stunning visuals.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
                     {images.map((img) => (

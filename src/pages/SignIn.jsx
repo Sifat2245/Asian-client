@@ -51,13 +51,13 @@ const SignIn = () => {
   return (
     <div className="flex justify-center items-center px-4">
       <PageTitle title={'Sign In - Asian'}></PageTitle>
-      <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
+      <div className="bg-white p-8 rounded-2xl lg:w-[40%] dark:bg-[#2e2e2e]  transition-all duration-300">
         <h2 className="text-3xl font-semibold text-center mb-6">Sign In</h2>
 
         <form onSubmit={handleSignIn}>
           {/* Email */}
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="mb-6 ">
+            <label htmlFor="email" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
               Email
             </label>
             <input
@@ -71,7 +71,7 @@ const SignIn = () => {
 
           {/* Password */}
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
             <input
@@ -120,7 +120,7 @@ const SignIn = () => {
           </button>
 
           {/* Create Account Link */}
-          <p className="mt-6 text-center text-sm text-gray-600">
+          <p className="dark:text-[#D8D8D8] mt-6 text-center text-sm text-gray-600">
             Don't have an account?{' '}
             <Link to="/user/signup" className="text-[#DB7137] hover:underline">
               Create one

@@ -13,7 +13,7 @@ const Countup = () => {
     });
 
     return (
-        <div className='my-32' ref={ref}>
+        <div className='py-32 dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300' ref={ref}>
             <div className='grid grid-cols-2 md:grid-cols-4 justify-between lg:w-4/5 mx-auto'>
                 {[
                     { img: image1, label: "Meals To Go", count: 580 },

@@ -28,15 +28,15 @@ const Forget = () => {
   }
 
   return (
-    <div className="flex justify-center items-center px-4">
+    <div className="flex justify-center items-center px-4 ">
       <PageTitle title={'Reset Password - Asian'}></PageTitle>
-      <div className="bg-white p-8 rounded-2xl lg:w-[40%]">
+      <div className="bg-white p-8 rounded-2xl lg:w-[40%] dark:bg-[#2e2e2e] transition-all duration-300">
         <h2 className="text-3xl font-semibold text-center mb-6">Reset Password</h2>
 
         <form onSubmit={handleForget}>
           {/* Email */}
           <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="email" className="dark:text-[#D8D8D8] block text-sm font-medium text-gray-700 mb-1">
               Email
             </label>
             <input
@@ -57,7 +57,7 @@ const Forget = () => {
           </button>
 
           {/* Links */}
-          <div className="mt-6 text-center text-sm text-gray-600 space-y-2">
+          <div className="mt-6 text-center text-sm text-gray-600 dark:text-[#D8D8D8] space-y-2">
             <p>
               Remembered your password?{' '}
               <Link to="/user/signin" className="text-[#DB7137] hover:underline">

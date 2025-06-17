@@ -36,7 +36,7 @@ const Gallery = () => {
     }));
 
     return (
-        <div>
+        <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
             <PageTitle title={'Our Gallery - Asian'}></PageTitle>
             {/* Banner */}
             <div
@@ -59,7 +59,7 @@ const Gallery = () => {
             </div>
 
             {/* Gallery Grid */}
-            <section className="my-32 max-w-8xl mx-auto">
+            <section className="py-32 max-w-8xl mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     {images.map((img, i) => (
                         <div

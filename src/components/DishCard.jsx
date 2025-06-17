@@ -52,7 +52,7 @@ const DishCard = ({ food }) => {
     return (
         <>
 
-            <div className="group w-64 lg:w-80 mx-auto relative rounded-md overflow-hidden border-2 border-[#f3f3f3] hover:border-[#DB7137] transition-all duration-700">
+            <div className="group w-64 lg:w-80 mx-auto relative rounded-md overflow-hidden border-2 border-[#f3f3f3] dark:border-[#3f3f3f] dark:bg-[#272727] hover:border-[#DB7137] transition-all duration-700 ">
                 {/* Image */}
                 <div className="relative">
                     <img
@@ -65,7 +65,7 @@ const DishCard = ({ food }) => {
                     {/* Hover Buttons */}
                     <div className="absolute top-6 right-6 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {[
-                            { icon: <FaEye />, tip: "Quick View", id: "tooltip-eye", onClick:() => setQuickViewModalOpen(true) },
+                            { icon: <FaEye />, tip: "Quick View", id: "tooltip-eye", onClick: () => setQuickViewModalOpen(true) },
                             { icon: <FaShoppingBag />, tip: "Add to Cart", id: "tooltip-cart" },
                             { icon: <FaHeart />, tip: "Add to Favorites", id: "tooltip-heart" },
                         ].map(({ icon, tip, id, onClick }, idx) => (
@@ -96,7 +96,7 @@ const DishCard = ({ food }) => {
                         {[...Array(5)].map((_, i) => (
                             <FaStar key={i} />
                         ))}
-                        <span className="text-gray-500 text-sm ml-2">1 review</span>
+                        <span className="text-gray-500 dark:text-[#D8D8D8] text-sm ml-2">1 review</span>
                     </div>
 
                     <Link to={`/foodDetails/${_id}`}>
@@ -106,15 +106,15 @@ const DishCard = ({ food }) => {
 
                     {/* Decorative line with hover animation */}
                     <div className="flex items-center justify-center gap-2 my-4">
-                        <div className="h-[2px] bg-[#0000001c] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
+                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
                         <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
                             <div className="w-2 h-2 bg-[#DB7137] rotate-45" />
                         </div>
-                        <div className="h-[2px] bg-[#0000001c] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
+                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
                     </div>
 
 
-                    <p className="text-xl text-gray-700">${price}</p>
+                    <p className="text-xl text-gray-700 dark:text-[#D8D8D8]">${price}</p>
                 </div>
             </div>
 
@@ -129,7 +129,7 @@ const DishCard = ({ food }) => {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-white rounded-2xl p-8 md:p-10 w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl relative"
+                            className="dark:bg-[#2e2e2e] transition-all duration-300 bg-white rounded-2xl p-8 md:p-10 w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl relative"
                             initial={{ y: 50, opacity: 0, scale: 0.95 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 50, opacity: 0, scale: 0.95 }}
@@ -156,7 +156,7 @@ const DishCard = ({ food }) => {
                                 {/* Details */}
                                 <div className="space-y-6 w-full lg:w-1/2">
                                     <h1 className="text-3xl sm:text-4xl font-semibold">{name}</h1>
-                                    <p className="text-gray-700">{description}</p>
+                                    <p className="text-gray-700 dark:text-[#D8D8D8] ">{description}</p>
 
                                     {/* Rating */}
                                     <div className="flex items-center gap-1 text-yellow-500 text-base">

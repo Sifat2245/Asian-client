@@ -34,7 +34,7 @@ const MyOrders = () => {
 
     if (loading) {
         return (
-            <div className='min-h-screen flex justify-center items-center'>
+            <div className='min-h-screen flex justify-center items-center dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
                 <div className='w-52'>
                     <Lottie animationData={loader} loop={true}></Lottie>
                 </div>
@@ -44,7 +44,7 @@ const MyOrders = () => {
 
 
     return (
-        <div>
+        <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
             <PageTitle title={'My Orders - Asian'}></PageTitle>
             <div
                 style={{
@@ -64,10 +64,10 @@ const MyOrders = () => {
                 </div>
             </div>
 
-            <div>
-                <div className="overflow-x-auto mt-10 px-2 md:px-6 lg:px-10 my-32">
+            <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
+                <div className="overflow-x-auto px-2 md:px-6 lg:px-10 py-32 ">
                     {orders.length > 0 ?
-                        <table className="min-w-4/5 mx-auto bg-white rounded-xl overflow-hidden shadow-md border border-gray-200">
+                        <table className="dark:bg-[#2e2e2e] transition-all duration-300 min-w-4/5 mx-auto bg-white rounded-xl overflow-hidden shadow-md border border-gray-200">
                             <thead className="bg-[#DB7137] text-white text-sm sm:text-base">
                                 <tr>
                                     <th className="py-4 px-3 text-left">Image</th>
