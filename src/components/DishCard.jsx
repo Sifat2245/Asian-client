@@ -106,11 +106,11 @@ const DishCard = ({ food }) => {
 
                     {/* Decorative line with hover animation */}
                     <div className="flex items-center justify-center gap-2 my-4">
-                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
+                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-18 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
                         <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
                             <div className="w-2 h-2 bg-[#DB7137] rotate-45" />
                         </div>
-                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-24 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
+                        <div className="h-[2px] bg-[#0000001c] dark:bg-[#3f3f3f] w-18 group-hover:w-34 group-hover:bg-[#DB7137] transition-all duration-700" />
                     </div>
 
 

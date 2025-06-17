@@ -21,7 +21,6 @@ const Navbar = () => {
     const getLeftLinks = (onClick) => (
         <>
             <NavLink to="/" className={navClass} onClick={onClick}>Home</NavLink>
-            <NavLink to="/about" className={navClass} onClick={onClick}>About Us</NavLink>
             <NavLink to="/allFoods" className={navClass} onClick={onClick}>All Foods</NavLink>
             <NavLink to="/ourGallery" className={navClass} onClick={onClick}>Gallery</NavLink>
         </>
@@ -29,7 +28,9 @@ const Navbar = () => {
 
     const getRightLinks = (onClick) => (
         <>
-            <NavLink to="/shop" className={navClass} onClick={onClick}>Shop</NavLink>
+            {/* <NavLink to="/shop" className={navClass} onClick={onClick}>Shop</NavLink> */}
+            <NavLink to="/about" className={navClass} onClick={onClick}>About Us</NavLink>
+
             <NavLink to="/news" className={navClass} onClick={onClick}>News</NavLink>
             <NavLink to="/contact" className={navClass} onClick={onClick}>Contact</NavLink>
         </>
