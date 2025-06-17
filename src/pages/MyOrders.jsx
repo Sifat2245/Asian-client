@@ -93,7 +93,7 @@ const MyOrders = () => {
                             </tbody>
                         </table>
                         : <div className='my-32 text-center'>
-                            <p className='text-2xl text-gray-600'>You haven’t placed any orders yet.</p>
+                            <p className='text-2xl text-gray-600 dark:text-[#D8D8D8]'>You haven’t placed any orders yet.</p>
                         </div>
                     }
                 </div>

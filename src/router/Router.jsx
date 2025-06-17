@@ -17,11 +17,13 @@ import Shop from "../pages/Shop";
 import News from "../pages/News";
 import ContactUs from "../pages/ContactUs";
 import Checkout from "../pages/Checkout";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: MainLayout,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 index: true,
