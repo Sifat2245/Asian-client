@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import bgImg from '../assets/bg.jpg'
 import { Link, useLoaderData } from 'react-router';
 import { FaStar } from 'react-icons/fa';
@@ -6,6 +6,7 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { CgNotes } from 'react-icons/cg';
 import PageTitle from '../hooks/PageTitle';
 import { authContext } from '../authProvider/AuthProvider';
+import ReviewSection from '../components/ReviewSection';
 
 
 
@@ -17,7 +18,7 @@ const FoodDetails = () => {
 
     const [qntity, setQntity] = useState(1)
     const [maxMessage, setMaxMessage] = useState('')
-    const {user} = use(authContext)
+    const { user } = useContext(authContext)
 
     const isOwner = user?.email === addedBy
 
@@ -49,7 +50,7 @@ const FoodDetails = () => {
     }
 
 
-    
+
 
     return (
         <div className='dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300'>
@@ -173,7 +174,15 @@ const FoodDetails = () => {
                     <h1 className='text-2xl font-bold mb-6'>Description:</h1>
                     <p>{longDescription}</p>
                 </div>
+
+
+                {/* review section */}
+                <div>
+                    <ReviewSection foodId={_id}></ReviewSection>
+                </div>
+
             </div>
+
 
         </div>
     );

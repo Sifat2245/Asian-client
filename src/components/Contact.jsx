@@ -1,32 +1,9 @@
 import React from 'react';
-import PageTitle from '../hooks/PageTitle';
-import contactBg from '../assets/para-02.jpg';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 
-const ContactUs = () => {
+const Contact = () => {
     return (
-        <div className="dark:bg-[#2e2e2e] dark:text-[#D8D8D8] transition-all duration-300">
-            <PageTitle title={'Contact Us - Asian'} />
-
-            {/* Hero section */}
-            <div
-                style={{
-                    backgroundImage: `url(${contactBg})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'top',
-                    backgroundRepeat: 'no-repeat',
-                }}
-                className="relative bg-fixed text-white min-h-[35vh] bg-[#1b1b1b7e] bg-blend-overlay flex flex-col items-center justify-start overflow-hidden"
-            >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0"></div>
-                <div className="relative z-10 w-full">
-                    <div className="mt-60 text-center">
-                        <h1 className="text-3xl lg:text-7xl font-thin">Contact Us</h1>
-                    </div>
-                </div>
-            </div>
-
-            {/* Contact form and info section */}
+        <div>
             <div className="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-16">
                 {/* Left: Form & Intro */}
                 <div>
@@ -47,7 +24,7 @@ const ContactUs = () => {
                         <div className='relative group w-full'>
                             <label className="block text-sm mb-1">Email :</label>
                             <input type="email" placeholder="Your Email" className="w-full border-b p-2 focus:outline-none bg-transparent" />
-                             <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-orange-600 transition-all duration-500 group-focus-within:w-full"></span>
+                            <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-orange-600 transition-all duration-500 group-focus-within:w-full"></span>
                         </div>
                         <div className='relative group w-full'>
                             <label className="block text-sm mb-1">Message :</label>
@@ -101,4 +78,4 @@ const ContactUs = () => {
     );
 };
 
-export default ContactUs;
+export default Contact;
