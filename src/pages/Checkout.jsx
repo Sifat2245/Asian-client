@@ -61,7 +61,7 @@ const Checkout = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    
+
 
                     return axios.patch(`https://asian-server-mu.vercel.app/foods/${_id}`, {
                         orderedQuantity: qntity
@@ -69,13 +69,13 @@ const Checkout = () => {
                 }
 
             })
-            .finally(() =>{
+            .finally(() => {
                 setLoading(false)
                 setTimeout(() => {
                     navigate('/myOrders')
                 }, 1000);
             })
-           
+
             .catch(error => {
                 console.log('there is some problem', error);
             })
@@ -84,7 +84,7 @@ const Checkout = () => {
 
     return (
         <>
-        <PageTitle title={'Checkout - Asian'}></PageTitle>
+            <PageTitle title={'Checkout - Asian'}></PageTitle>
             <div
                 style={{
                     backgroundImage: `url(${bgImg})`,
@@ -110,6 +110,48 @@ const Checkout = () => {
                     {/* Left Column: Form */}
                     <form onSubmit={handleOrderSubmit} className="lg:pr-12 lg:border-r lg:border-base-300">
                         {/* Contact Section */}
+                        <div className="block md:hidden py-12">
+                            <div className="sticky top-12">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center gap-4">
+                                        <div className="avatar">
+                                            <div className="w-20 rounded-lg relative ring ring-base-300">
+                                                <div className="badge badge-neutral absolute top- right-0 z-10">{qntity}</div>
+                                                <img src={image} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold">{name}</p>
+                                            <p className="text-sm text-base-content/70">{cuisine}</p>
+                                        </div>
+                                    </div>
+                                    <p className="font-semibold">${price}</p>
+                                </div>
+
+                                <div className="divider"></div>
+
+                                <div className="space-y-2 mb-4">
+                                    <div className="flex justify-between">
+                                        <p>Subtotal</p>
+                                        <p>${subtotal.toFixed(2)}</p>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <p>Shipping</p>
+                                        <p>${shipping}</p>
+                                    </div>
+                                </div>
+
+                                <div className="divider"></div>
+
+                                <div className="flex justify-between items-center">
+                                    <p className="text-lg">Total</p>
+                                    <p className="text-2xl font-bold">
+                                        <span className="text-sm font-normal text-base-content/70 mr-2">USD</span>
+                                        ${total.toFixed(2)}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                         <div className="mb-8">
                             <div className="mb-4">
                                 <h2 className="text-2xl font-semibold">Contact</h2>
@@ -143,7 +185,7 @@ const Checkout = () => {
                             <input type="text" name='address' placeholder="Address" className="input input-bordered w-full mb-4" required />
                             <input type="text" name='apartment' placeholder="Apartment, suite, etc. (optional)" className="input input-bordered w-full mb-4" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <input type="text" name='city' placeholder="City" className="input input-bordered w-full" required/>
+                                <input type="text" name='city' placeholder="City" className="input input-bordered w-full" required />
                                 <input type="text" name='postalCode' placeholder="Postal code (optional)" className="input input-bordered w-full" />
                             </div>
                             <div className="form-control">
@@ -189,12 +231,12 @@ const Checkout = () => {
                             </div>
                         </div>
 
-                        <button type='submit' className="btn btn-warning btn-block text-black">{loading? 'Proceeding...': 'Pay Now'}</button>
+                        <button type='submit' className="btn btn-warning btn-block text-black">{loading ? 'Proceeding...' : 'Pay Now'}</button>
 
                     </form>
 
                     {/* Right Column: Order Summary */}
-                    <div className="lg:pl-12">
+                    <div className="lg:pl-12 hidden md:block">
                         <div className="sticky top-12">
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-4">
