@@ -106,7 +106,7 @@ const AddFood = () => {
                             placeholder="e.g., Spicy Ramen"
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                            className="w-full p-3 border border-gray-300 200 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-neutral-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                             required
                         />
                     </div>
@@ -121,7 +121,7 @@ const AddFood = () => {
                             placeholder="https://example.com/food.jpg"
                             value={formData.image}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                             required
                         />
                     </div>
@@ -137,7 +137,7 @@ const AddFood = () => {
                                 placeholder="e.g., 12.99"
                                 value={formData.price}
                                 onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                                 required
                                
                             />
@@ -151,7 +151,7 @@ const AddFood = () => {
                                 placeholder="e.g., 100"
                                 value={formData.quantity}
                                 onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                                 required
                             />
                         </div>
@@ -168,7 +168,7 @@ const AddFood = () => {
                                 placeholder="e.g., Italian, Bangladeshi"
                                 value={formData.cuisine}
                                 onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                                 required
                             />
                         </div>
@@ -181,7 +181,7 @@ const AddFood = () => {
                                 placeholder="e.g., Dessert, Main Course"
                                 value={formData.category}
                                 onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200"
                                 required
                             />
                         </div>
@@ -197,7 +197,7 @@ const AddFood = () => {
                             value={formData.description}
                             onChange={handleChange}
                             rows="3"
-                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200 resize-y"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200 resize-y"
                             required
                         />
                     </div>
@@ -212,7 +212,7 @@ const AddFood = () => {
                             value={formData.longDescription}
                             onChange={handleChange}
                             rows="5"
-                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200 resize-y"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#DB7137] focus:border-transparent dark:bg-[#2e2e2e] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white transition duration-200 resize-y"
                             required
                         />
                     </div>
