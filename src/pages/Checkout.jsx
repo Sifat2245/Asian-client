@@ -11,6 +11,7 @@ const Checkout = () => {
     const location = useLocation()
     const foodData = location.state || {}
     const { user } = use(authContext)
+    const token = user.accessToken
     // console.log(user.email);
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
@@ -49,9 +50,13 @@ const Checkout = () => {
             totalPrice: total,
             orderTime: new Date().toISOString()
         }
-        console.log(orderDetails);
+        // console.log(orderDetails);
 
-        axios.post('https://asian-server-mu.vercel.app/orders', orderDetails)
+        axios.post('https://asian-server-mu.vercel.app/orders', orderDetails,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

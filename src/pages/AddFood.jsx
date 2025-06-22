@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router';
 const AddFood = () => {
 
     const { user } = use(authContext)
+    const token = user.accessToken
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -42,7 +43,11 @@ const AddFood = () => {
             purchaseCount: parseInt(formData.purchaseCount)
         }
 
-        axios.post('https://asian-server-mu.vercel.app/foods', preparedData)
+        axios.post('https://asian-server-mu.vercel.app/foods', preparedData,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

@@ -69,7 +69,7 @@ const AboutUs = () => {
                         Book a Table
                     </button>
 
-                    <div className="absolute mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="lg:absolute mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         {[
                             {
                                 name: "Nick Mcallister",
@@ -102,9 +102,9 @@ const AboutUs = () => {
                                     alt={member.name}
                                     className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
                                 />
-                                <h3 className="text-lg font-semibold">{member.name}</h3>
+                                <h3 className="text-lg text-white lg:text-black font-semibold">{member.name}</h3>
                                 <p className="text-sm uppercase text-orange-600 mb-2">{member.role}</p>
-                                <p className="text-gray-500 dark:text-gray-300 text-sm">{member.bio}</p>
+                                <p className="text-white lg:text-gray-500 dark:text-gray-300 text-sm">{member.bio}</p>
                             </div>
                         ))}
                     </div>
@@ -112,7 +112,7 @@ const AboutUs = () => {
             </div>
 
             {/* Stats Section */}
-            <div className="bg-orange-50 dark:bg-[#1f1f1f] mt-96 py-16">
+            <div className="bg-orange-50 dark:bg-[#1f1f1f] mt-24 lg:mt-96 py-16">
                 <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8 text-center">
                     {[
                         { title: '10+', subtitle: 'Years of Experience' },
