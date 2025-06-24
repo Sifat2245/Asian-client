@@ -11,4 +11,6 @@ const PageTitle = ({title}) => {
     );
 };
 
+
+
 export default PageTitle;
