@@ -58,7 +58,7 @@ const Footer = () => {
 
                         <p className="tracking-widest font-light mt-10 uppercase">Stay Tuned</p>
                         <p className="text-center mt-8 font-light">
-                            Discover fresh flavors and unforgettable <br />
+                            Discover your fresh flavors and unforgettable <br />
                             moments. Join our community <br />
                             and stay updated with special offers.
                         </p>
